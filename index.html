@@ -10,12 +10,15 @@
         <input data-bind="value: searchTerm">
         <button type="submit">Submit</button>
       </form>
-<!--     <div>
-      <h2 data-bind= "text: searchTerm"></h2>
-    </div> -->
     <div id= "mapArea">
-      <p data-bind="foreach: viewModel.originalList"></p>
-      <div id="map"></div>
+<!--       <div data-bind="foreach: viewModel.title">
+        <h2 data-bind="text: $data"></h2> -->
+      </div>
+      <div data-bind="foreach: viewModel.originalList" class ="floatLeft">
+        <p data-bind="text: name"></p>
+      </div>
+      <div id="map">
+      </div>
     </div>
     <script type="text/javascript" src="js/knockout.min.js"></script>
     <script type="text/javascript" src="js/googleMap.js"></script>

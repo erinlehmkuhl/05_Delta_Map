@@ -139,10 +139,19 @@ var viewModel = {
 		
 		searchTerm: ko.observable(),
 
-		originalList: ko.observable()
+		// title: ko.computed(function(mapMarkers) {
+		// 	var titles = [];
+		// 	for (marker in mapMarkers) {
+		// 		titles.push(mapMarkers[i]);
+		// 		console.log(mapMarkers[i]);
+		// 	}
+		// 	return titles[0];
+		// 	}),
+
+		originalList: ko.observableArray(mapMarkers.obstacles)
 
 };
 viewModel.init();
 ko.applyBindings(viewModel);
 
-console.log(mapMarkers.obstacles[0].name);
+console.log(viewModel.title);
