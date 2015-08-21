@@ -1,4 +1,4 @@
-var mapMarkers = {
+mapMarkers = {
 	"obstacles": [
 		{"name": "Tree", "center": {lat: 38.1025, lng: -121.5625}}, 
 		{"name": "Tree", "center": {lat: 38.1200, lng: -121.5855}}
@@ -74,70 +74,75 @@ var mapMarkers = {
 	]
 };
 
-//make buttons in menu bar
-var menuBar = document.getElementById('menuBar');
-var searchCategories = Object.keys(mapMarkers);
 
-for (var i = 0; i < searchCategories.length; i++) {
-	var iconButton = document.createElement('BUTTON');
-	iconButton.innerHTML = searchCategories[i];
-	menuBar.appendChild(iconButton);
-}
 
-var map;
-function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-	    center: {lat: 38.103, lng: -121.572}, 
-	    zoom: 12
-	    ,
-	    mapTypeId: google.maps.MapTypeId.HYBRID,
-		});
 
-	//draw the obstacles on the map
-	for (var i = 0; i < mapMarkers.obstacles.length; i++) {
-		new google.maps.Circle({
-			strokeColor: '#FF0000',
-			strokeOpacity: 0.8,
-			strokeWeight: 2,
-			fillColor: '#FF0000',
-			fillOpacity: 0.35,
-			map: map,
-			center: mapMarkers.obstacles[i].center,
-			radius: 30,
-			draggable:true,
-		})
-	}
-
-	//draw items of interest on the map
-	addMarkers = function(category) {
-		var loopLength = mapMarkers[category].length;
-		for (i = 0; i < loopLength; i++) {	
-			var location = mapMarkers[category][i]['center'];
-	    	new google.maps.Circle({
-				strokeColor: '#FFF000',
-				strokeOpacity: 0.8,
-				strokeWeight: 2,
-				fillColor: '#FF0000',
-				fillOpacity: 0.35,
-				map: map,
-				center: location,
-				radius: 350,
-				draggable:true,
-	    	})
+var viewModel = {
+	//initialize page with menu bar, map and underwater 
+	//obstruction map markers 
+	init: function() {
+		var menuBar = document.getElementById('menuBar');
+		var searchCategories = Object.keys(mapMarkers);
+		for (var i = 0; i < searchCategories.length; i++) {
+			var iconButton = document.createElement('BUTTON');
+			iconButton.innerHTML = searchCategories[i];
+			menuBar.appendChild(iconButton);
 		}
-	}
-	//addMarkers("gas");
-};
-
-
-var viewModel = function(searchTerm, formElement) {
-	this.loadMarkers = function(formElement) {
-		console.log("loadMarkers");
 	},
-	
-	this.searchTerm = ko.observable(searchTerm);
 
-	this.originalList = ko.observable(mapMarkers.obstacles);
+		initMap: function() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+			    center: {lat: 38.103, lng: -121.572}, 
+			    zoom: 12,
+			    mapTypeId: google.maps.MapTypeId.HYBRID,
+				});
+
+			//draw the obstruction markers on the map
+			for (var i = 0; i < mapMarkers.obstacles.length; i++) {
+				new google.maps.Circle({
+					strokeColor: '#FF0000',
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: '#FF0000',
+					fillOpacity: 0.35,
+					map: map,
+					center: mapMarkers.obstacles[i].center,
+					radius: 30,
+					draggable:true,
+				})
+			}
+		},
+
+
+		//draw items of interest on the map
+		addMarkers: function(category) {
+			//var category = "bars";
+			var loopLength = mapMarkers[category].length;
+			for (i = 0; i < loopLength; i++) {	
+				var location = mapMarkers[category][i]['center'];
+		    	new google.maps.Circle({
+					strokeColor: '#FFF000',
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: '#FF0000',
+					fillOpacity: 0.35,
+					map: map,
+					center: location,
+					radius: 350,
+					draggable:true,
+		    	})
+			}
+		},
+
+
+		loadMarkers: ko.observable(),
+		
+		searchTerm: ko.observable(),
+
+		originalList: ko.observable()
 
 };
-ko.applyBindings(new viewModel());
+viewModel.init();
+ko.applyBindings(viewModel);
+
+console.log(mapMarkers.obstacles[0].name);
