@@ -84,8 +84,18 @@ function initMap() {
 			]
 		};
 
+	//make buttons in menu bar
+	var menuBar = document.getElementById('menuBar');
+	var searchCategories = Object.keys(mapMarkers);
+
+	for (var i = 0; i < searchCategories.length; i++) {
+		var iconButton = document.createElement('BUTTON');
+		iconButton.innerHTML = searchCategories[i];
+		menuBar.appendChild(iconButton);
+	}
+
 	//draw the obstacles on the map
-	for (var i in mapMarkers.obstacles) {
+	for (var i = 0; i < mapMarkers.obstacles.length; i++) {
     	new google.maps.Circle({
 			strokeColor: '#FF0000',
 			strokeOpacity: 0.8,
@@ -120,3 +130,12 @@ function initMap() {
 	addMarkers("gas");
 };
 
+var viewModel = function(searchTerm, formElement) {
+	this.loadMarkers = function(formElement) {
+		console.log("loadMarkers");
+	},
+	
+	this.searchTerm = ko.observable(searchTerm);
+
+};
+ko.applyBindings(new viewModel());
