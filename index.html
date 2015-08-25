@@ -9,18 +9,21 @@
     <hr>
       <form id="searchBar"> 
         <input>
-        <button type="submit">Submit</button>
+        <button type="submit">Search</button>
       </form>
+
+
     <div id= "mapArea">
-      <div data-bind="foreach: viewModel.searchTerm">
-        <h2 data-bind="text: $data"></h2>
-      </div>
-      <div  id= "sideBarArea" data-bind="foreach: viewModel.sideBarList" class ="floatLeft">
-        <p data-bind="text: name"></p>
+      <div data-bind="click: onClick" class ="floatLeft">
+        <ul data-bind="foreach: sideBarArray">
+          <li data-bind="text: $data"></li>
+        </ul>
       </div>
       <div id="map">
       </div>
     </div>
+
+
     <script type="text/javascript" src="js/knockout.min.js"></script>
     <script type="text/javascript" src="js/googleMap.js"></script>
     <script async defer

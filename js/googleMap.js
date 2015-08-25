@@ -117,6 +117,13 @@ var viewModel = {
 	},
 
 
+	sideBarArray: ko.observableArray(),
+
+	resetSideBar: function(){
+		this.sideBarArray([]);
+	},
+
+
 	//draw items of interest on the map
 	addMarkers: function() {
 		var map = new google.maps.Map(document.getElementById('map'), {
@@ -144,17 +151,15 @@ var viewModel = {
 
 	//populates names in side bar
 	addSideBarInfo: function(){
-		var sideBarArea = document.getElementById('sideBarArea');
 		for (marker in mapMarkers[this.category]){
-			var sideBarElem = document.createElement('P');
-			sideBarElem.innerHTML = mapMarkers[this.category][marker]['name'];
-			sideBarArea.appendChild(sideBarElem);
+			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
 		}
 	},
 
 	
 	onClick: function() {
 		this.category = event.target.innerHTML;
+		viewModel.resetSideBar();
 		viewModel.addSideBarInfo();
 		viewModel.addMarkers();
 	}
