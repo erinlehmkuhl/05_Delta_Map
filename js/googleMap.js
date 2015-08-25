@@ -1,5 +1,5 @@
 mapMarkers = {
-	"obstacles": [
+	"obstructions": [
 		{"name": "Tree", "center": {lat: 38.1025, lng: -121.5625}}, 
 		{"name": "Tree", "center": {lat: 38.1200, lng: -121.5855}}
 	],
@@ -81,8 +81,7 @@ var viewModel = {
 
 	searchCategories: Object.keys(mapMarkers),
 
-	//initialize page with menu bar, map and underwater 
-	//obstruction map markers 
+	//initialize page with menu bar, map and underwater obstruction map markers 
 	init: function() {
 		var menuBar = document.getElementById('menuBar');
 		for (var i = 0; i < viewModel.searchCategories.length; i++) {
@@ -93,6 +92,34 @@ var viewModel = {
 		}
 	},
 
+	userLocation: function(map) {
+		var initialLocation = new google.maps.LatLng(38.103, -121.572);
+		// Try W3C Geolocation (Preferred)
+		if(navigator.geolocation) {
+			browserSupportFlag = true;
+			navigator.geolocation.getCurrentPosition(function(position) {
+		  		initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		  		map.setCenter(initialLocation);
+			}, function() {
+		  		handleNoGeolocation(browserSupportFlag);
+			});
+		}
+		// Browser doesn't support Geolocation
+		else {
+			browserSupportFlag = false;
+			handleNoGeolocation(browserSupportFlag);
+		}
+
+		function handleNoGeolocation(errorFlag) {
+			if (errorFlag == true) {
+				  //alert("Geolocation service failed.");
+				} else {
+				  //alert("Your browser doesn't support geolocation.");
+				}
+				map.setCenter(initialLocation);
+			}
+		},
+
 	initMap: function() {
 		var map = new google.maps.Map(document.getElementById('map'), {
 		    center: {lat: 38.103, lng: -121.572}, 
@@ -100,8 +127,10 @@ var viewModel = {
 		    mapTypeId: google.maps.MapTypeId.HYBRID,
 			});
 
+		viewModel.userLocation(map);
+
 		//draw the obstruction markers on the map
-		for (var i = 0; i < mapMarkers.obstacles.length; i++) {
+		for (var i = 0; i < mapMarkers.obstructions.length; i++) {
 			new google.maps.Circle({
 				strokeColor: '#FF0000',
 				strokeOpacity: 0.8,
@@ -109,7 +138,7 @@ var viewModel = {
 				fillColor: '#FF0000',
 				fillOpacity: 0.35,
 				map: map,
-				center: mapMarkers.obstacles[i].center,
+				center: mapMarkers.obstructions[i].center,
 				radius: 30,
 				draggable:true,
 			})
@@ -117,7 +146,7 @@ var viewModel = {
 	},
 
 
-	sideBarArray: ko.observableArray(),
+	sideBarArray: ko.observableArray(["Beware: underwater obstructions"]),
 
 	resetSideBar: function(){
 		this.sideBarArray([]);
@@ -153,6 +182,7 @@ var viewModel = {
 	addSideBarInfo: function(){
 		for (marker in mapMarkers[this.category]){
 			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
+			this.sideBarArray.sort();
 		}
 	},
 
@@ -162,6 +192,10 @@ var viewModel = {
 		viewModel.resetSideBar();
 		viewModel.addSideBarInfo();
 		viewModel.addMarkers();
+	},
+
+	searchArray: function() {
+
 	}
 
 };
