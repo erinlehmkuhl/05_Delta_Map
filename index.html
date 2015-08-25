@@ -2,19 +2,20 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Delta Loop</title>
   </head>
   <body>
     <div id="menuBar"> </div>
     <hr>
-      <form id="searchBar" data-bind="click: loadMarkers"> 
-        <input data-bind="value: searchTerm">
+      <form id="searchBar"> 
+        <input>
         <button type="submit">Submit</button>
       </form>
     <div id= "mapArea">
-<!--       <div data-bind="foreach: viewModel.title">
-        <h2 data-bind="text: $data"></h2> -->
+      <div data-bind="foreach: viewModel.searchTerm">
+        <h2 data-bind="text: $data"></h2>
       </div>
-      <div data-bind="foreach: viewModel.originalList" class ="floatLeft">
+      <div  id= "sideBarArea" data-bind="foreach: viewModel.sideBarList" class ="floatLeft">
         <p data-bind="text: name"></p>
       </div>
       <div id="map">

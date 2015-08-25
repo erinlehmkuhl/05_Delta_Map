@@ -78,80 +78,88 @@ mapMarkers = {
 
 
 var viewModel = {
+
+	searchCategories: Object.keys(mapMarkers),
+
 	//initialize page with menu bar, map and underwater 
 	//obstruction map markers 
 	init: function() {
 		var menuBar = document.getElementById('menuBar');
-		var searchCategories = Object.keys(mapMarkers);
-		for (var i = 0; i < searchCategories.length; i++) {
+		for (var i = 0; i < viewModel.searchCategories.length; i++) {
 			var iconButton = document.createElement('BUTTON');
-			iconButton.innerHTML = searchCategories[i];
+			iconButton.innerHTML = viewModel.searchCategories[i];
+			iconButton.setAttribute("data-bind", "click: onClick");
 			menuBar.appendChild(iconButton);
 		}
 	},
 
-		initMap: function() {
-			var map = new google.maps.Map(document.getElementById('map'), {
-			    center: {lat: 38.103, lng: -121.572}, 
-			    zoom: 12,
-			    mapTypeId: google.maps.MapTypeId.HYBRID,
-				});
+	initMap: function() {
+		var map = new google.maps.Map(document.getElementById('map'), {
+		    center: {lat: 38.103, lng: -121.572}, 
+		    zoom: 12,
+		    mapTypeId: google.maps.MapTypeId.HYBRID,
+			});
 
-			//draw the obstruction markers on the map
-			for (var i = 0; i < mapMarkers.obstacles.length; i++) {
-				new google.maps.Circle({
-					strokeColor: '#FF0000',
-					strokeOpacity: 0.8,
-					strokeWeight: 2,
-					fillColor: '#FF0000',
-					fillOpacity: 0.35,
-					map: map,
-					center: mapMarkers.obstacles[i].center,
-					radius: 30,
-					draggable:true,
-				})
-			}
-		},
-
-
-		//draw items of interest on the map
-		addMarkers: function(category) {
-			//var category = "bars";
-			var loopLength = mapMarkers[category].length;
-			for (i = 0; i < loopLength; i++) {	
-				var location = mapMarkers[category][i]['center'];
-		    	new google.maps.Circle({
-					strokeColor: '#FFF000',
-					strokeOpacity: 0.8,
-					strokeWeight: 2,
-					fillColor: '#FF0000',
-					fillOpacity: 0.35,
-					map: map,
-					center: location,
-					radius: 350,
-					draggable:true,
-		    	})
-			}
-		},
+		//draw the obstruction markers on the map
+		for (var i = 0; i < mapMarkers.obstacles.length; i++) {
+			new google.maps.Circle({
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				center: mapMarkers.obstacles[i].center,
+				radius: 30,
+				draggable:true,
+			})
+		}
+	},
 
 
-		loadMarkers: ko.observable(),
-		
-		searchTerm: ko.observable(),
+	//draw items of interest on the map
+	addMarkers: function() {
+		var map = new google.maps.Map(document.getElementById('map'), {
+	    center: {lat: 38.103, lng: -121.572}, 
+	    zoom: 12,
+	    mapTypeId: google.maps.MapTypeId.HYBRID,
+		});
+		var loopLength = mapMarkers[this.category].length;
+		for (i = 0; i < loopLength; i++) {	
+			var location = mapMarkers[this.category][i]['center'];
+	    	new google.maps.Circle({
+				strokeColor: '#FFF000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35,
+				map: map,
+				center: location,
+				radius: 350,
+				draggable:true,
+	    	})
+		}
+	},
 
-		// title: ko.computed(function(mapMarkers) {
-		// 	var titles = [];
-		// 	for (marker in mapMarkers) {
-		// 		titles.push(mapMarkers[i]);
-		// 		console.log(mapMarkers[i]);
-		// 	}
-		// 	return titles[0];
-		// 	}),
 
-		originalList: ko.observableArray(mapMarkers.obstacles)
+	//populates names in side bar
+	addSideBarInfo: function(){
+		var sideBarArea = document.getElementById('sideBarArea');
+		for (marker in mapMarkers[this.category]){
+			var sideBarElem = document.createElement('P');
+			sideBarElem.innerHTML = mapMarkers[this.category][marker]['name'];
+			sideBarArea.appendChild(sideBarElem);
+		}
+	},
+
+	
+	onClick: function() {
+		this.category = event.target.innerHTML;
+		viewModel.addSideBarInfo();
+		viewModel.addMarkers();
+	}
 
 };
 viewModel.init();
 ko.applyBindings(viewModel);
 
-console.log(viewModel.title);
