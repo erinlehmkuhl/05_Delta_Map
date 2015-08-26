@@ -160,8 +160,13 @@ var viewModel = {
 	    zoom: 12,
 	    mapTypeId: google.maps.MapTypeId.HYBRID,
 		});
+
+		//set markers and bounds based on json information
 		var loopLength = mapMarkers[this.category].length;
-		for (i = 0; i < loopLength; i++) {	
+		var bounds = new google.maps.LatLngBounds();
+		for (i = 0; i < loopLength; i++) {
+			var lat = mapMarkers[this.category][i].center.lat;
+			var lng =  mapMarkers[this.category][i].center.lng;
 			var location = mapMarkers[this.category][i]['center'];
 	    	new google.maps.Circle({
 				strokeColor: '#FFF000',
@@ -174,7 +179,9 @@ var viewModel = {
 				radius: 350,
 				draggable:true,
 	    	})
+	    	bounds.extend(new google.maps.LatLng(lat, lng));
 		}
+		map.fitBounds(bounds);
 	},
 
 
@@ -196,6 +203,18 @@ var viewModel = {
 
 	searchArray: function() {
 
+	}, 
+
+	parseCenter: function() {
+		var curLats = [];
+		var curLongs = [];
+		for (i in mapMarkers.bars) {
+			var lats = (mapMarkers.bars[i].center.lat);
+			curLats.push(lats);
+		}
+		curLats.sort();
+		curLats.pop();
+		console.log(curLats.pop());
 	}
 
 };
