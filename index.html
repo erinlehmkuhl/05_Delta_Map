@@ -10,11 +10,12 @@
       <form id="searchBar"> 
         <input>
         <button type="submit">Search</button>
+        <button type="reset" data-bind="click: clearSearch">Clear</button>
       </form>
 
 
     <div id= "mapArea">
-      <div data-bind="click: onClick" class ="floatLeft">
+      <div data-bind="click: onClick" class="floatLeft">
         <ul data-bind="foreach: sideBarArray">
           <li data-bind="text: $data"></li>
         </ul>

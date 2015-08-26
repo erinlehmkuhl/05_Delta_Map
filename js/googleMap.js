@@ -146,10 +146,16 @@ var viewModel = {
 	},
 
 
-	sideBarArray: ko.observableArray(["Beware: underwater obstructions"]),
+	sideBarArray: ko.observableArray(),
 
-	resetSideBar: function(){
+	resetSideBar: function() {
 		this.sideBarArray([]);
+	},
+
+
+	clearSearch: function() {
+		viewModel.initMap();
+		viewModel.resetSideBar();
 	},
 
 
@@ -203,19 +209,8 @@ var viewModel = {
 
 	searchArray: function() {
 
-	}, 
-
-	parseCenter: function() {
-		var curLats = [];
-		var curLongs = [];
-		for (i in mapMarkers.bars) {
-			var lats = (mapMarkers.bars[i].center.lat);
-			curLats.push(lats);
-		}
-		curLats.sort();
-		curLats.pop();
-		console.log(curLats.pop());
 	}
+
 
 };
 viewModel.init();
