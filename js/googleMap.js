@@ -119,16 +119,18 @@ var viewModel = {
 		},
 
 	initMap: function() {
+		//draw map
 		var mapDiv = document.getElementById('map');
 		var mapOptions = {
 		    center: {lat: 38.103, lng: -121.572}, 
 		    zoom: 12,
 		    mapTypeId: google.maps.MapTypeId.HYBRID,
 			};
-
 		var map = new google.maps.Map(mapDiv, mapOptions);
 
-		//viewModel.userLocation(map);
+		//check for user location to set map
+		//TODO: use this OR the preset if user out of range
+		viewModel.userLocation(map);
 
 		//draw the obstruction markers on the map
 		for (var i = 0; i < mapMarkers.obstructions.length; i++) {
@@ -189,9 +191,9 @@ var viewModel = {
 			// }.bind(this), i * 200);
 
 
-	    	//bounds.extend(new google.maps.LatLng(lat, lng));
+	    	bounds.extend(new google.maps.LatLng(lat, lng));
 		}
-		//map.fitBounds(bounds);
+		map.fitBounds(bounds);
 	},
 
 
@@ -219,7 +221,7 @@ var viewModel = {
   		for (var i = 0; i < viewModel.markers.length; i++) {
     		viewModel.markers[i].setMap(null);
   		}
- 		 console.log(viewModel.markers);
+  		viewModel.markers = [];
 		},
 
 
