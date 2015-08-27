@@ -130,7 +130,7 @@ var viewModel = {
 
 		//check for user location to set map
 		//TODO: use this OR the preset if user out of range
-		viewModel.userLocation(map);
+		//viewModel.userLocation(map);
 
 		//draw the obstruction markers on the map
 		for (var i = 0; i < mapMarkers.obstructions.length; i++) {
@@ -156,8 +156,6 @@ var viewModel = {
 
 	//set markers and bounds based on json information
 	addMarkers: function() {
-		viewModel.clearMarkers();
-
 		var mapDiv = document.getElementById('map');
 		var mapOptions = {
 		    center: {lat: 38.103, lng: -121.572}, 
@@ -167,28 +165,25 @@ var viewModel = {
 
 		map = new google.maps.Map(mapDiv, mapOptions);
 
+		//viewModel.initMap();
+
 		var loopLength = mapMarkers[this.category].length;
 		var bounds = new google.maps.LatLngBounds();
 		for (i = 0; i < loopLength; i++) {
 			var lat = mapMarkers[this.category][i].center.lat;
 			var lng =  mapMarkers[this.category][i].center.lng;
 			var location = mapMarkers[this.category][i]['center'];
-
-			// viewModel.addMarkerWithTimeout(location, i * 200);
-			// window.setTimeout(function() {
-				viewModel.markers.push(new google.maps.Marker({
-					position: location,
-					map: map,
-					animation: google.maps.Animation.DROP
-				}));
-				new google.maps.Marker({
-					position: location,
-					map: map,
-					animation: google.maps.Animation.DROP
-				});
-				console.log(location);
-				console.log(viewModel.markers);
-			// }.bind(this), i * 200);
+			viewModel.markers.push(new google.maps.Marker({
+				position: location,
+				map: map,
+				animation: google.maps.Animation.DROP
+			}));
+			new google.maps.Marker({
+				position: location,
+				map: map,
+				animation: google.maps.Animation.DROP
+			});
+				-->//markers[i].setMap(map);
 
 
 	    	bounds.extend(new google.maps.LatLng(lat, lng));
@@ -209,6 +204,7 @@ var viewModel = {
 	onClick: function() {
 		this.category = event.target.innerHTML;
 		viewModel.resetSideBar();
+		viewModel.clearMarkers();
 		viewModel.addSideBarInfo();
 		viewModel.addMarkers();
 	},
