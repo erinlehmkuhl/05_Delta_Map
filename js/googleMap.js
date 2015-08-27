@@ -194,7 +194,7 @@ var viewModel = {
 		viewModel.addMarkers();
 	},
 
-	markerClick: function() {
+	hightlightText: function() {
 		console.log("I will eventually hightlight a list item");
 	},
 
