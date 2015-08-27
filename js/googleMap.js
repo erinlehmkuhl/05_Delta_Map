@@ -75,8 +75,6 @@ mapMarkers = {
 };
 
 
-
-
 var viewModel = {
 
 	searchCategories: Object.keys(mapMarkers),
@@ -121,13 +119,16 @@ var viewModel = {
 		},
 
 	initMap: function() {
-		var map = new google.maps.Map(document.getElementById('map'), {
+		var mapDiv = document.getElementById('map');
+		var mapOptions = {
 		    center: {lat: 38.103, lng: -121.572}, 
 		    zoom: 12,
 		    mapTypeId: google.maps.MapTypeId.HYBRID,
-			});
+			};
 
-		viewModel.userLocation(map);
+		var map = new google.maps.Map(mapDiv, mapOptions);
+
+		//viewModel.userLocation(map);
 
 		//draw the obstruction markers on the map
 		for (var i = 0; i < mapMarkers.obstructions.length; i++) {
@@ -148,46 +149,49 @@ var viewModel = {
 
 	sideBarArray: ko.observableArray(),
 
-	resetSideBar: function() {
-		this.sideBarArray([]);
-	},
+	markers: [],
 
 
-	clearSearch: function() {
-		viewModel.initMap();
-		viewModel.resetSideBar();
-	},
-
-
-	//draw items of interest on the map
+	//set markers and bounds based on json information
 	addMarkers: function() {
-		var map = new google.maps.Map(document.getElementById('map'), {
-	    center: {lat: 38.103, lng: -121.572}, 
-	    zoom: 12,
-	    mapTypeId: google.maps.MapTypeId.HYBRID,
-		});
+		viewModel.clearMarkers();
 
-		//set markers and bounds based on json information
+		var mapDiv = document.getElementById('map');
+		var mapOptions = {
+		    center: {lat: 38.103, lng: -121.572}, 
+		    zoom: 12,
+		    mapTypeId: google.maps.MapTypeId.HYBRID,
+			};
+
+		map = new google.maps.Map(mapDiv, mapOptions);
+
 		var loopLength = mapMarkers[this.category].length;
 		var bounds = new google.maps.LatLngBounds();
 		for (i = 0; i < loopLength; i++) {
 			var lat = mapMarkers[this.category][i].center.lat;
 			var lng =  mapMarkers[this.category][i].center.lng;
 			var location = mapMarkers[this.category][i]['center'];
-	    	new google.maps.Circle({
-				strokeColor: '#FFF000',
-				strokeOpacity: 0.8,
-				strokeWeight: 2,
-				fillColor: '#FF0000',
-				fillOpacity: 0.35,
-				map: map,
-				center: location,
-				radius: 350,
-				draggable:true,
-	    	})
-	    	bounds.extend(new google.maps.LatLng(lat, lng));
+
+			// viewModel.addMarkerWithTimeout(location, i * 200);
+			// window.setTimeout(function() {
+				viewModel.markers.push(new google.maps.Marker({
+					position: location,
+					map: map,
+					animation: google.maps.Animation.DROP
+				}));
+				new google.maps.Marker({
+					position: location,
+					map: map,
+					animation: google.maps.Animation.DROP
+				});
+				console.log(location);
+				console.log(viewModel.markers);
+			// }.bind(this), i * 200);
+
+
+	    	//bounds.extend(new google.maps.LatLng(lat, lng));
 		}
-		map.fitBounds(bounds);
+		//map.fitBounds(bounds);
 	},
 
 
@@ -205,6 +209,23 @@ var viewModel = {
 		viewModel.resetSideBar();
 		viewModel.addSideBarInfo();
 		viewModel.addMarkers();
+	},
+
+		resetSideBar: function() {
+		this.sideBarArray([]);
+	},
+
+	clearMarkers: function() {
+  		for (var i = 0; i < viewModel.markers.length; i++) {
+    		viewModel.markers[i].setMap(null);
+  		}
+ 		 console.log(viewModel.markers);
+		},
+
+
+	clearSearch: function() {
+		viewModel.clearMarkers();
+		viewModel.resetSideBar();
 	},
 
 	searchArray: function() {
