@@ -15,20 +15,17 @@
 
 
     <div id= "mapArea">
-      <div data-bind="click: onClick" class="floatLeft">
+      <div class="floatLeft">
         <ul data-bind="foreach: sideBarArray">
-          <li data-bind="text: $data"></li>
+          <li data-bind="text: $data, click: $parent.highlightMarker"></li>
         </ul>
       </div>
       <div id="map">
       </div>
     </div>
 
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw3yFhKbI90hzE_o1ewvftKIccsGlHD7c&callback=viewModel.initMap"></script>
     <script type="text/javascript" src="js/knockout.min.js"></script>
     <script type="text/javascript" src="js/googleMap.js"></script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw3yFhKbI90hzE_o1ewvftKIccsGlHD7c&callback=viewModel.initMap">
-    </script>
   </body>
 </html>

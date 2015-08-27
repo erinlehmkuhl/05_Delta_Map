@@ -74,10 +74,10 @@ mapMarkers = {
 	]
 };
 
-
 var viewModel = {
 
 	searchCategories: Object.keys(mapMarkers),
+
 
 	//initialize page with menu bar, map and underwater obstruction map markers 
 	init: function() {
@@ -85,7 +85,7 @@ var viewModel = {
 		for (var i = 0; i < viewModel.searchCategories.length; i++) {
 			var iconButton = document.createElement('BUTTON');
 			iconButton.innerHTML = viewModel.searchCategories[i];
-			iconButton.setAttribute("data-bind", "click: onClick");
+			iconButton.setAttribute("data-bind", "click: categoryClick");
 			menuBar.appendChild(iconButton);
 		}
 	},
@@ -128,11 +128,11 @@ var viewModel = {
 			};
 		var map = new google.maps.Map(mapDiv, mapOptions);
 
-		//check for user location to set map
-		//TODO: use this OR the preset if user out of range
-		//viewModel.userLocation(map);
+		// check for user location to set map
+		// TODO: use this OR the preset if user out of range
+		// viewModel.userLocation(map);
 
-		//draw the obstruction markers on the map
+		// draw the obstruction markers on the map
 		for (var i = 0; i < mapMarkers.obstructions.length; i++) {
 			new google.maps.Circle({
 				strokeColor: '#FF0000',
@@ -146,49 +146,33 @@ var viewModel = {
 				draggable:true,
 			})
 		}
+		this.map = map;
 	},
-
 
 	sideBarArray: ko.observableArray(),
 
 	markers: [],
 
-
 	//set markers and bounds based on json information
 	addMarkers: function() {
-		var mapDiv = document.getElementById('map');
-		var mapOptions = {
-		    center: {lat: 38.103, lng: -121.572}, 
-		    zoom: 12,
-		    mapTypeId: google.maps.MapTypeId.HYBRID,
-			};
-
-		map = new google.maps.Map(mapDiv, mapOptions);
-
-		//viewModel.initMap();
-
 		var loopLength = mapMarkers[this.category].length;
 		var bounds = new google.maps.LatLngBounds();
 		for (i = 0; i < loopLength; i++) {
 			var lat = mapMarkers[this.category][i].center.lat;
 			var lng =  mapMarkers[this.category][i].center.lng;
 			var location = mapMarkers[this.category][i]['center'];
+			
 			viewModel.markers.push(new google.maps.Marker({
 				position: location,
-				map: map,
-				animation: google.maps.Animation.DROP
+				map: this.map,
+				animation: google.maps.Animation.DROP,
+				id: mapMarkers[this.category][i].name,
+				icon: 'http://maps.google.com/mapfiles/ms/icons/red.png',
 			}));
-			new google.maps.Marker({
-				position: location,
-				map: map,
-				animation: google.maps.Animation.DROP
-			});
-				-->//markers[i].setMap(map);
-
-
+			viewModel.markers[i].addListener('click', viewModel.hightlightText);
 	    	bounds.extend(new google.maps.LatLng(lat, lng));
 		}
-		map.fitBounds(bounds);
+		this.map.fitBounds(bounds);
 	},
 
 
@@ -197,11 +181,12 @@ var viewModel = {
 		for (marker in mapMarkers[this.category]){
 			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
 			this.sideBarArray.sort();
+
 		}
 	},
 
 	
-	onClick: function() {
+	categoryClick: function() {
 		this.category = event.target.innerHTML;
 		viewModel.resetSideBar();
 		viewModel.clearMarkers();
@@ -209,7 +194,22 @@ var viewModel = {
 		viewModel.addMarkers();
 	},
 
-		resetSideBar: function() {
+	markerClick: function() {
+		console.log("I will eventually hightlight a list item");
+	},
+
+	highlightMarker: function() {
+		for (var i = 0; i < viewModel.markers.length; i++) {
+			if (viewModel.markers[i].id == this) {
+				var marker = viewModel.markers[i];
+				marker.icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+				marker.map.panTo(marker.getPosition());
+				marker.setMap(marker.map);
+			}
+		}
+	},
+
+	resetSideBar: function() {
 		this.sideBarArray([]);
 	},
 
