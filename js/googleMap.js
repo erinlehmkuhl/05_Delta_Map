@@ -1,7 +1,7 @@
 mapMarkers = {
 	"obstructions": [
-		{"name": "Tree", "center": {lat: 38.1025, lng: -121.5625}}, 
-		{"name": "Tree", "center": {lat: 38.1200, lng: -121.5855}}
+		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}}, 
+		{"name": "Embedded Log", "center": {lat: 38.1200, lng: -121.5855}}
 	],
 	"anchorages": [
 		{"name": "The Meadows", "center": {lat: 38.2509717, lng: -121.497613}},
@@ -169,7 +169,7 @@ var viewModel = {
 				id: mapMarkers[this.category][i].name,
 				icon: 'http://maps.google.com/mapfiles/ms/icons/red.png',
 			}));
-			viewModel.markers[i].addListener('click', viewModel.hightlightText);
+			viewModel.markers[i].addListener('click', viewModel.highlightToggle);
 	    	bounds.extend(new google.maps.LatLng(lat, lng));
 		}
 		this.map.fitBounds(bounds);
@@ -181,7 +181,6 @@ var viewModel = {
 		for (marker in mapMarkers[this.category]){
 			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
 			this.sideBarArray.sort();
-
 		}
 	},
 
@@ -194,9 +193,24 @@ var viewModel = {
 		viewModel.addMarkers();
 	},
 
-	hightlightText: function() {
-		console.log("I will eventually hightlight a list item");
+	highlightText: ko.observable(0),
+
+
+	highlightToggle: function() {
+		var list = document.getElementsByClassName("sideBarElems");
+		for (var i = 0; i < viewModel.markers.length; i++) {
+			var appearance = list[i].style.color;
+			if (list[i].innerHTML == this.id){
+				if (appearance == "black") {
+					viewModel.highlightText = ko.observable(1);
+				}else if (appearance == "red") {
+					viewModel.highlightText = ko.observable(0);
+				}
+			}
+		}
+		console.log(viewModel.highlightText());
 	},
+
 
 	highlightMarker: function() {
 		for (var i = 0; i < viewModel.markers.length; i++) {
@@ -205,6 +219,7 @@ var viewModel = {
 				marker.icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 				marker.map.panTo(marker.getPosition());
 				marker.setMap(marker.map);
+				//TODO: make that marker layered on top
 			}
 		}
 	},
