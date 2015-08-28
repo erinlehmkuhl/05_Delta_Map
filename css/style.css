@@ -19,3 +19,7 @@ html, body {
 .floatLeft {
 	float: left;
 }
+
+#highlight {
+	color: red;
+}

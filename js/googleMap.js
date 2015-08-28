@@ -193,22 +193,23 @@ var viewModel = {
 		viewModel.addMarkers();
 	},
 
-	highlightText: ko.observable(0),
+	//0 = black, 1 = red for sideBar text
+	//highlightText: ko.observable(0),
 
 
 	highlightToggle: function() {
 		var list = document.getElementsByClassName("sideBarElems");
 		for (var i = 0; i < viewModel.markers.length; i++) {
-			var appearance = list[i].style.color;
+			var appearance = list[i].id;
 			if (list[i].innerHTML == this.id){
-				if (appearance == "black") {
-					viewModel.highlightText = ko.observable(1);
-				}else if (appearance == "red") {
-					viewModel.highlightText = ko.observable(0);
+				list[i].setAttribute("id", "highlight");
+				if (appearance == "highlight") {
+					list[i].setAttribute("id", "null");
+				}else if (appearance == "highlight") {
+					list[i].setAttribute("id", "");
 				}
 			}
 		}
-		console.log(viewModel.highlightText());
 	},
 
 
@@ -249,4 +250,3 @@ var viewModel = {
 };
 viewModel.init();
 ko.applyBindings(viewModel);
-

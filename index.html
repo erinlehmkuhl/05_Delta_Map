@@ -17,7 +17,7 @@
     <div id= "mapArea">
       <div class="floatLeft">
         <ul data-bind="foreach: sideBarArray">
-          <li class="sideBarElems" data-bind="text: $data, click: $parent.highlightMarker, style: { color: $parent.highlightText() > 0 ? 'red' : 'black' }"></li>
+          <li class="sideBarElems" data-bind="text: $data, click: $parent.highlightMarker"></li>
         </ul>
       </div>
       <div id="map">
