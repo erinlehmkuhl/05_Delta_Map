@@ -5,7 +5,25 @@
     <title>Delta Loop</title>
   </head>
   <body>
-    <div id="menuBar"> </div>
+    <div id="menuBar"> 
+      <div class="floatLeft">
+        <h1>Delta Loop</h1>
+      </div>
+      <div>
+      <table>
+        <tr>
+          <td data-bind="text: statWind"></td>
+        </tr>
+        <tr>
+          <td data-bind="text: statWater"></td>
+        <tr>
+        </tr>
+          <td data-bind="text: statAir"></td>
+        <tr>
+        </tr>
+      </table>
+      </div>
+    </div>
     <hr>
       <form id="searchBar"> 
         <input>
@@ -25,6 +43,7 @@
     </div>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw3yFhKbI90hzE_o1ewvftKIccsGlHD7c&callback=viewModel.initMap"></script>
+    <script src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/knockout.min.js"></script>
     <script type="text/javascript" src="js/googleMap.js"></script>
   </body>

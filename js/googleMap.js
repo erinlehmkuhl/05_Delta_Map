@@ -76,9 +76,6 @@ mapMarkers = {
 
 var viewModel = {
 
-	searchCategories: Object.keys(mapMarkers),
-
-
 	//initialize page with menu bar, map and underwater obstruction map markers 
 	init: function() {
 		var menuBar = document.getElementById('menuBar');
@@ -88,7 +85,46 @@ var viewModel = {
 			iconButton.setAttribute("data-bind", "click: categoryClick");
 			menuBar.appendChild(iconButton);
 		}
+		viewModel.noaaRequest();
 	},
+
+
+	statWind: ko.observable("Wind Speed: not available"),
+	statWater: ko.observable("Water Temperature: not available"),
+	statAir: ko.observable("Air Temperature: not available"),
+
+
+	noaaRequest: function(data) {
+		var noaaURLs = [
+			windURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
+				+"&station=9415144&product=wind&units=english&time_zone=gmt&application=weather&format=json",
+			waterURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
+				+"&station=9415144&product=water_temperature&units=english&time_zone=gmt&application=weather&format=json",
+			airURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
+				+"&station=9415144&product=air_temperature&units=english&time_zone=gmt&application=weather&format=json"
+			];
+
+		var noaaFunctions = [viewModel.statWind, viewModel.statWater, viewModel.statAir];
+
+		var noaaLabels = ["Wind Speed: ", "Water Temperature: ", "Air Temperature: "];
+
+		//for (var i = 0; i < noaaURLs.length; i++){
+			//format url for Yahoo proxy
+			var yql = 'http://query.yahooapis.com/v1/public/yql?'
+	        	+ 'q=' + encodeURIComponent('select * from json where url=@url')
+	        	+ '&url=' + encodeURIComponent(noaaURLs[0])
+	        	+ '&format=json&callback=?';
+	        //parse data from each URL and push it to HTML through knockout.js
+			$.getJSON(yql,
+			  function (data) {
+			  	var noaaJsonDatum = data.query.results.json.data.s;
+			  	viewModel.statWind("Wind Speed: " + noaaJsonDatum);
+			});
+		//}
+    },
+
+	searchCategories: Object.keys(mapMarkers),
+
 
 	userLocation: function(map) {
 		var initialLocation = new google.maps.LatLng(38.103, -121.572);
@@ -250,3 +286,6 @@ var viewModel = {
 };
 viewModel.init();
 ko.applyBindings(viewModel);
+
+
+
