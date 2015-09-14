@@ -9,70 +9,72 @@ mapMarkers = {
 		{"name": "The Bedrooms in Potato Slough", "center": {lat: 38.0841627, lng: -121.538574}}
 	],
 	"restaurants": [
-		{"name": "Korth's Pirates' Lair", "center": {lat: 38.0977543, lng: -121.5680157}},
-		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}},
-		{"name": "Moore's Riverboat", "center": {lat: 38.1007412, lng: -121.5658718}},
-		{"name": "Rosa's", "center": {lat: 38.1101495, lng: -121.4983044}},
-		{"name": "Giusti's Place", "center": {lat: 38.2242578, lng: -121.5071795}},
-		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}},
-		{"name": "The Point", "center": {lat: 38.1487831, lng: -121.6909701}},
-		{"name": "Boardwalk Grill", "center": {lat: 37.9056747, lng: -121.5869824}},
-		{"name": "Wimpy's", "center": {lat: 38.2264718, lng: -121.490745}},
-		{"name": "Orwood", "center": {lat: 37.9388633, lng: -121.6123867}},
-		{"name": "Rusty Porthole", "center": {lat: 38.0347238, lng: -121.6230485}}
+		{"name": "Korth's Pirates' Lair", "center": {lat: 38.0977543, lng: -121.5680157}, "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
+		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}, "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
+		{"name": "Moore's Riverboat", "center": {lat: 38.1007412, lng: -121.5658718}, "fb": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts"},
+		{"name": "Rosa's", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/Rosasattowerpark"},
+		{"name": "Giusti's Place", "center": {lat: 38.2242578, lng: -121.5071795}, "fb": "https://www.facebook.com/Giustis-341683185695/timeline/"},
+		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
+		{"name": "The Point", "center": {lat: 38.1487831, lng: -121.6909701}, "fb": "https://www.facebook.com/ThePointRestaurantRioVista"},
+		{"name": "Boardwalk Grill", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Boardwalk-Grill-285018528287/timeline/"},
+		{"name": "Wimpy's", "center": {lat: 38.2264718, lng: -121.490745}, "fb": "https://www.facebook.com/Wimpys-Marina-405286399555382/timeline/"},
+		{"name": "Orwood", "center": {lat: 37.9388633, lng: -121.6123867}, "fb": "https://www.facebook.com/orwoodresort"},
+		{"name": "Rusty Porthole", "center": {lat: 38.0347238, lng: -121.6230485}, "fb": "https://www.facebook.com/Rusty-Porthole-217097898307326/timeline/"}
 	],
 	"bars": [
-		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}},
-		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}},
-		{"name": "Sugar Barge", "center": {lat: 38.0280595, lng: -121.6116769}},
-		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}}
+		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
+		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}, "fb": "https://www.facebook.com/groups/327403865799/"},
+		{"name": "Sugar Barge", "center": {lat: 38.0280595, lng: -121.6116769}, "fb": "https://www.facebook.com/sugar.barge?fref=ts"},
+		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "fb": "http://www.thespindrift.com/"}
 	],
 	"repairs": [
-		{"name": "Delta Boat Works", "center": {lat: 38.0997402, lng: -121.5669706}},
-		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}}
+		{"name": "Delta Boat Works", "center": {lat: 38.0997402, lng: -121.5669706}, "fb": "http://deltaboatworks.com/"},
+		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "fb": "http://www.perrysboatharbor.com/"},
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
 	],
 	"gas": [
-		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}},
-		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}},
-		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}},
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}}
+		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
+		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
+		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"}
 	],
 	"berthing": [
-		{"name": "Discovery Bay", "center": {lat: 37.9056747, lng: -121.5869824}},
-		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}},
-		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}},
-		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}},
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}},
-		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}},
-		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}},
-		{"name": "Owl Harbor", "center": {lat: 38.1162493, lng: -121.6257876}}
+		{"name": "Discovery Bay", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}, "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
+		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
+		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "fb": "http://www.perrysboatharbor.com/"},
+		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "fb": "http://www.spindriftmarina.com/"},
+		{"name": "Owl Harbor", "center": {lat: 38.1162493, lng: -121.6257876}, "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"}
 	],
 	"rentals": [
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}},
-		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}},
-		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}}
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}, "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
+		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"}
 	],
 	"lodging": [
-		{"name": "Stockton Delta KOA", "center": {lat: 38.1101495, lng: -121.4983044}},
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}},
-		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}}
+		{"name": "Stockton Delta KOA", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/StocktonKOA"},
+		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}, "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"}
 	],
 	"launches": [
-		{"name": "Orwood", "center": {lat: 37.9388633, lng: -121.6123867}},
-		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}},
-		{"name": "Paradise Point", "center": {lat: 38.0464052,lng:  -121.4182412}},
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}},
-		{"name": "Discovery Bay", "center": {lat: 37.9056747, lng: -121.5869824}}
+		{"name": "Orwood", "center": {lat: 37.9388633, lng: -121.6123867}, "fb": "https://www.facebook.com/orwoodresort"},
+		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}, "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
+		{"name": "Paradise Point", "center": {lat: 38.0464052,lng:  -121.4182412}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "Discovery Bay", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"}
 	],
 	"stores": [
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}},
-		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}}
+		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
 	]
 };
+
+
 
 
 noaaData = {
@@ -111,7 +113,6 @@ var viewModel = {
 	statWind: ko.observable("Wind Speed: not available"),
 	statWater: ko.observable("Water Temperature: not available"),
 	statAir: ko.observable("Air Temperature: not available"),
-
 
 
 	noaaRequest: function(data) {
@@ -300,6 +301,8 @@ var viewModel = {
 };
 viewModel.init();
 ko.applyBindings(viewModel);
+
+
 
 
 
