@@ -106,21 +106,30 @@ var viewModel = {
 
 		var noaaFunctions = [viewModel.statWind, viewModel.statWater, viewModel.statAir];
 
-		var noaaLabels = ["Wind Speed: ", "Water Temperature: ", "Air Temperature: "];
+		var noaaLabels = ["Wind Speed: ", "Water Temp: ", "Air Temp: "];
 
-		//for (var i = 0; i < noaaURLs.length; i++){
+		var noaaAttrs = ["s", "v", "v"];
+
+		var noaaSuffixes = ["knots", "degrees", "degrees"]
+
+		$.each(noaaURLs, function (i) {
 			//format url for Yahoo proxy
 			var yql = 'http://query.yahooapis.com/v1/public/yql?'
 	        	+ 'q=' + encodeURIComponent('select * from json where url=@url')
-	        	+ '&url=' + encodeURIComponent(noaaURLs[0])
+	        	+ '&url=' + encodeURIComponent(noaaURLs[i])
 	        	+ '&format=json&callback=?';
+
 	        //parse data from each URL and push it to HTML through knockout.js
-			$.getJSON(yql,
-			  function (data) {
-			  	var noaaJsonDatum = data.query.results.json.data.s;
-			  	viewModel.statWind("Wind Speed: " + noaaJsonDatum);
-			});
-		//}
+				$.getJSON(yql,
+				  function (data) {
+				  	var noaaLabel = noaaLabels[i];
+				  	var noaaSuffix = noaaSuffixes[i];
+				  	var noaaAttr = noaaAttrs[i];
+				  	var noaaJsonDatum = data.query.results.json.data[noaaAttr];
+				  	var noaaFunction = noaaFunctions[i];
+				  	noaaFunction(noaaLabel + " " + noaaJsonDatum + " " + noaaSuffix);
+				});
+		})
     },
 
 	searchCategories: Object.keys(mapMarkers),
