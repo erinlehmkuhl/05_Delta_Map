@@ -74,6 +74,26 @@ mapMarkers = {
 	]
 };
 
+
+noaaData = {
+
+	"urls": [
+	windURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
+		+"&station=9415144&product=wind&units=english&time_zone=gmt&application=weather&format=json",
+	waterURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
+		+"&station=9415144&product=water_temperature&units=english&time_zone=gmt&application=weather&format=json",
+	airURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
+		+"&station=9415144&product=air_temperature&units=english&time_zone=gmt&application=weather&format=json"
+	],
+
+	"labels": ["Wind Speed: ", "Water Temp: ", "Air Temp: "],
+
+	"attrs": ["s", "v", "v"],
+
+	"suffixes": ["knots", "degrees", "degrees"],
+};
+
+
 var viewModel = {
 
 	//initialize page with menu bar, map and underwater obstruction map markers 
@@ -88,47 +108,32 @@ var viewModel = {
 		viewModel.noaaRequest();
 	},
 
-
 	statWind: ko.observable("Wind Speed: not available"),
 	statWater: ko.observable("Water Temperature: not available"),
 	statAir: ko.observable("Air Temperature: not available"),
 
 
-	noaaRequest: function(data) {
-		var noaaURLs = [
-			windURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
-				+"&station=9415144&product=wind&units=english&time_zone=gmt&application=weather&format=json",
-			waterURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
-				+"&station=9415144&product=water_temperature&units=english&time_zone=gmt&application=weather&format=json",
-			airURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
-				+"&station=9415144&product=air_temperature&units=english&time_zone=gmt&application=weather&format=json"
-			];
 
+	noaaRequest: function(data) {
 		var noaaFunctions = [viewModel.statWind, viewModel.statWater, viewModel.statAir];
 
-		var noaaLabels = ["Wind Speed: ", "Water Temp: ", "Air Temp: "];
-
-		var noaaAttrs = ["s", "v", "v"];
-
-		var noaaSuffixes = ["knots", "degrees", "degrees"]
-
-		$.each(noaaURLs, function (i) {
+		$.each(noaaData.urls, function (i) {
 			//format url for Yahoo proxy
 			var yql = 'http://query.yahooapis.com/v1/public/yql?'
 	        	+ 'q=' + encodeURIComponent('select * from json where url=@url')
-	        	+ '&url=' + encodeURIComponent(noaaURLs[i])
+	        	+ '&url=' + encodeURIComponent(noaaData.urls[i])
 	        	+ '&format=json&callback=?';
 
 	        //parse data from each URL and push it to HTML through knockout.js
-				$.getJSON(yql,
-				  function (data) {
-				  	var noaaLabel = noaaLabels[i];
-				  	var noaaSuffix = noaaSuffixes[i];
-				  	var noaaAttr = noaaAttrs[i];
-				  	var noaaJsonDatum = data.query.results.json.data[noaaAttr];
-				  	var noaaFunction = noaaFunctions[i];
-				  	noaaFunction(noaaLabel + " " + noaaJsonDatum + " " + noaaSuffix);
-				});
+			$.getJSON(yql,
+			  function (data) {
+			  	var noaaLabel = noaaData.labels[i];
+			  	var noaaSuffix = noaaData.suffixes[i];
+			  	var noaaAttr = noaaData.attrs[i];
+			  	var noaaValue = data.query.results.json.data[noaaAttr];
+			  	var noaaFunction = noaaFunctions[i];
+			  	noaaFunction(noaaLabel + " " + noaaValue + " " + noaaSuffix);
+			});
 		})
     },
 
