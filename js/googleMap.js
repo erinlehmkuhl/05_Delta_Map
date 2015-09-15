@@ -1,4 +1,4 @@
-mapMarkers = {
+var mapMarkers = {
 	"obstructions": [
 		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}}, 
 		{"name": "Embedded Log", "center": {lat: 38.1200, lng: -121.5855}}
@@ -75,9 +75,7 @@ mapMarkers = {
 };
 
 
-
-
-noaaData = {
+var noaaData = {
 
 	"urls": [
 	windURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
@@ -248,14 +246,28 @@ var viewModel = {
 	//highlightText: ko.observable(0),
 
 
+	//when you click the marker on the map	
 	highlightToggle: function() {
 		var list = document.getElementsByClassName("sideBarElems");
+var myKey = Object.valueOf(mapMarkers[category]);////////// TODO: loop through categories - eh, probably wont work
 		for (var i = 0; i < viewModel.markers.length; i++) {
+			console.log(myKey);
 			var appearance = list[i].id;
-			if (list[i].innerHTML == this.id){
-				list[i].setAttribute("id", "highlight");
+			//var contentString = "<div><h3>" + this.id + "</h3><a>" + mapMarkers[this.category][this.id][fb] + "</a></div>"
+
+			if (list[i].innerHTML == this.id){ //if the marker id matches the sidebar name
+				list[i].setAttribute("id", "highlight");//make search term red
+								//make info bubble pop up
+				var infowindow = new google.maps.InfoWindow({
+					content: this.id,
+					map: this.map
+					})
+				infowindow.open(map, this);
+
 				if (appearance == "highlight") {
 					list[i].setAttribute("id", "null");
+					infowindow.close();
+
 				}else if (appearance == "highlight") {
 					list[i].setAttribute("id", "");
 				}
@@ -263,7 +275,7 @@ var viewModel = {
 		}
 	},
 
-
+	//when you click the search term in the sidebar
 	highlightMarker: function() {
 		for (var i = 0; i < viewModel.markers.length; i++) {
 			if (viewModel.markers[i].id == this) {
@@ -272,6 +284,7 @@ var viewModel = {
 				marker.map.panTo(marker.getPosition());
 				marker.setMap(marker.map);
 				//TODO: make that marker layered on top
+				//TODO: after clicking a second marker, make the first go back to orig icon
 			}
 		}
 	},
