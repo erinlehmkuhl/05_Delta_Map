@@ -37,7 +37,7 @@ var mapMarkers = {
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
 		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"}
+		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"}
 	],
 	"berthing": [
 		{"name": "Discovery Bay", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
@@ -45,7 +45,7 @@ var mapMarkers = {
 		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
 		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "fb": "http://www.perrysboatharbor.com/"},
 		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "fb": "http://www.spindriftmarina.com/"},
 		{"name": "Owl Harbor", "center": {lat: 38.1162493, lng: -121.6257876}, "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"}
@@ -57,20 +57,53 @@ var mapMarkers = {
 	],
 	"lodging": [
 		{"name": "Stockton Delta KOA", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/StocktonKOA"},
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}, "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"}
 	],
 	"launches": [
 		{"name": "Orwood", "center": {lat: 37.9388633, lng: -121.6123867}, "fb": "https://www.facebook.com/orwoodresort"},
 		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}, "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052,lng:  -121.4182412}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Discovery Bay", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"}
 	],
 	"stores": [
-		{"name": "B & W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
 		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
+	]
+};
+
+var markerURLs = {
+	"popups": [
+	{"name": "B and W", "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+	{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+	{"name": "Tower Park Marina Resort", "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+	{"name": "Discovery Bay", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+	{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+	{"name": "Whiskey Slough", "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
+	{"name": "Stockton Delta KOA", "fb": "https://www.facebook.com/StocktonKOA"},
+	{"name": "Lighthouse", "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
+	{"name": "Tower Park Marina Resort", "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+	{"name": "Perry's", "fb": "http://www.perrysboatharbor.com/"},
+	{"name": "Spindrift", "fb": "http://www.spindriftmarina.com/"},
+	{"name": "Owl Harbor", "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"},
+	{"name": "Willow Berm", "fb": "https://www.facebook.com/willowberm?fref=ts"},
+	{"name": "Korth's Pirates' Lair", "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
+	{"name": "Lighthouse", "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
+	{"name": "Moore's Riverboat", "fb": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts"},
+	{"name": "Rosa's", "fb": "https://www.facebook.com/Rosasattowerpark"},
+	{"name": "Giusti's Place", "fb": "https://www.facebook.com/Giustis-341683185695/timeline/"},
+	{"name": "Windmill Cove", "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
+	{"name": "The Point", "fb": "https://www.facebook.com/ThePointRestaurantRioVista"},
+	{"name": "Boardwalk Grill", "fb": "https://www.facebook.com/Boardwalk-Grill-285018528287/timeline/"},
+	{"name": "Wimpy's", "fb": "https://www.facebook.com/Wimpys-Marina-405286399555382/timeline/"},
+	{"name": "Orwood", "fb": "https://www.facebook.com/orwoodresort"},
+	{"name": "Rusty Porthole", "fb": "https://www.facebook.com/Rusty-Porthole-217097898307326/timeline/"},
+	{"name": "Lost Isle", "fb": "https://www.facebook.com/groups/327403865799/"},
+	{"name": "Sugar Barge",  "fb": "https://www.facebook.com/sugar.barge?fref=ts"},
+	{"name": "Spindrift", "fb": "http://www.thespindrift.com/"},
+	{"name": "Delta Boat Works", "fb": "http://deltaboatworks.com/"}
 	]
 };
 
@@ -247,22 +280,35 @@ var viewModel = {
 
 
 	//when you click the marker on the map	
+	//TODO: second click needs to be taken care of, GET OF UNDEFINED error
 	highlightToggle: function() {
 		var list = document.getElementsByClassName("sideBarElems");
-var myKey = Object.valueOf(mapMarkers[category]);////////// TODO: loop through categories - eh, probably wont work
-		for (var i = 0; i < viewModel.markers.length; i++) {
-			console.log(myKey);
-			var appearance = list[i].id;
-			//var contentString = "<div><h3>" + this.id + "</h3><a>" + mapMarkers[this.category][this.id][fb] + "</a></div>"
 
+		for (var i = 0; i < viewModel.markers.length; i++) {//check id's of all markers on map
+			var appearance = list[i].id;
 			if (list[i].innerHTML == this.id){ //if the marker id matches the sidebar name
-				list[i].setAttribute("id", "highlight");//make search term red
-								//make info bubble pop up
-				var infowindow = new google.maps.InfoWindow({
-					content: this.id,
-					map: this.map
-					})
-				infowindow.open(map, this);
+				//make search term red
+				list[i].setAttribute("id", "highlight");
+
+				//make info bubble pop up
+				for (var i = 0; i < markerURLs.popups.length; i++){
+					if (this.id == markerURLs.popups[i].name){
+						console.log(markerURLs.popups[i].fb);
+						var urlTag = markerURLs.popups[i].fb;
+						if (!markerURLs.popups[i].fb){
+							urlTag = ""
+						}
+
+						var contentString = "<div><h3>" + this.id + "</h3><a>" 
+						+ urlTag + "</a></div>"
+
+						var infowindow = new google.maps.InfoWindow({
+						content: contentString,
+						map: this.map
+						})
+						infowindow.open(map, this);
+					}
+				}
 
 				if (appearance == "highlight") {
 					list[i].setAttribute("id", "null");
