@@ -298,8 +298,10 @@ var viewModel = {
 				var urlTag = markerURLs.popups[i].fb;
 
 				//prep map pop up
-				var contentString = "<div><h3>" + self.id + "</h3><a>" 
-				+ urlTag + "</a></div>"
+				var contentString = "<div><h3>" + self.id + "</h3><a href=" 
+				+ urlTag + ">click me</a></div>"
+
+				//var contentString = '<div class="fb-page" data-href="https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"></div> <div class="fb-like"data-share="true" data-width="450"data-show-faces="true"></div>';
 
 				this.infowindow.setContent(contentString);
 

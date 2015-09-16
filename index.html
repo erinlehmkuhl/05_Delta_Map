@@ -5,6 +5,25 @@
     <title>Delta Loop</title>
   </head>
   <body>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '887545611339686',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
     <div id="menuBar"> 
       <div class="floatLeft">
         <h1>Delta Loop</h1>
@@ -38,6 +57,12 @@
           <li class="sideBarElems" data-bind="text: $data, click: $parent.clickSideBar"></li>
         </ul>
       </div>
+
+<!--         <div class="fb-page" data-href="https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false">
+        </div> 
+        <div class="fb-like"data-share="true" data-width="450"data-show-faces="true">
+        </div> -->
+      
       <div id="map">
       </div>
     </div>
