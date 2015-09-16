@@ -310,25 +310,22 @@ var viewModel = {
 
 
 	//when you click the marker on the map	
-	//TODO: second click needs to be taken care of, GET OF UNDEFINED error
 	clickMarker: function() {
 		var list = document.getElementsByClassName("sideBarElems");
 		var self = this;
+
 		for (var i = 0; i < viewModel.markers.length; i++) {//check id's of all markers on map
-			var appearance = list[i].id;
-			if (list[i].innerHTML == this.id){ //if the marker id matches the sidebar name
-				
-				viewModel.mapPopUp(self);
-				
-				list[i].setAttribute("id", "highlight");//make sideBar term red
+			var indivAppearance = list[i].id;
 
-				if (appearance == "highlight") {// if it's already red, make it black
-					list[i].setAttribute("id", "null");
+			if (indivAppearance == "highlight") {//if a searchTerm is alread red
+				list[i].setAttribute("id", "null");//set it to black
 
-				// }else if (appearance == "highlight") {//clear it out (in case of something weird)
-				// 	list[i].setAttribute("id", "");
-				// 	infowindow.close();
-
+			}else {
+				if (list[i].innerHTML == this.id){ //if the marker id matches the sidebar name
+					
+					viewModel.mapPopUp(self);//pop up infowindow
+					
+					list[i].setAttribute("id", "highlight");//make sideBar term red
 				}
 			}
 		}
