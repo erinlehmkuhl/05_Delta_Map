@@ -76,34 +76,39 @@ var mapMarkers = {
 
 var markerURLs = {
 	"popups": [
-	{"name": "B and W", "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
-	{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-	{"name": "Tower Park Marina Resort", "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
-	{"name": "Discovery Bay", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-	{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-	{"name": "Whiskey Slough", "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
-	{"name": "Stockton Delta KOA", "fb": "https://www.facebook.com/StocktonKOA"},
-	{"name": "Lighthouse", "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
-	{"name": "Tower Park Marina Resort", "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
-	{"name": "Perry's", "fb": "http://www.perrysboatharbor.com/"},
-	{"name": "Spindrift", "fb": "http://www.spindriftmarina.com/"},
-	{"name": "Owl Harbor", "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"},
-	{"name": "Willow Berm", "fb": "https://www.facebook.com/willowberm?fref=ts"},
-	{"name": "Korth's Pirates' Lair", "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
-	{"name": "Lighthouse", "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
-	{"name": "Moore's Riverboat", "fb": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts"},
-	{"name": "Rosa's", "fb": "https://www.facebook.com/Rosasattowerpark"},
-	{"name": "Giusti's Place", "fb": "https://www.facebook.com/Giustis-341683185695/timeline/"},
-	{"name": "Windmill Cove", "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
-	{"name": "The Point", "fb": "https://www.facebook.com/ThePointRestaurantRioVista"},
-	{"name": "Boardwalk Grill", "fb": "https://www.facebook.com/Boardwalk-Grill-285018528287/timeline/"},
-	{"name": "Wimpy's", "fb": "https://www.facebook.com/Wimpys-Marina-405286399555382/timeline/"},
-	{"name": "Orwood", "fb": "https://www.facebook.com/orwoodresort"},
-	{"name": "Rusty Porthole", "fb": "https://www.facebook.com/Rusty-Porthole-217097898307326/timeline/"},
-	{"name": "Lost Isle", "fb": "https://www.facebook.com/groups/327403865799/"},
-	{"name": "Sugar Barge",  "fb": "https://www.facebook.com/sugar.barge?fref=ts"},
-	{"name": "Spindrift", "fb": "http://www.thespindrift.com/"},
-	{"name": "Delta Boat Works", "fb": "http://deltaboatworks.com/"}
+		{"name": "Submerged Tree", "fb": "www.placeholder.com"},  
+		{"name": "Embedded Log",  "fb": "www.placeholder.com"},
+		{"name": "The Meadows",  "fb": "www.placeholder.com"},
+		{"name": "Mandaville Tip", "fb": "www.placeholder.com"},
+		{"name": "The Bedrooms in Potato Slough", "fb": "www.placeholder.com"},
+		{"name": "B and W", "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
+		{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+		{"name": "Tower Park Marina Resort", "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+		{"name": "Discovery Bay", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+		{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
+		{"name": "Whiskey Slough", "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
+		{"name": "Stockton Delta KOA", "fb": "https://www.facebook.com/StocktonKOA"},
+		{"name": "Lighthouse", "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
+		{"name": "Tower Park Marina Resort", "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+		{"name": "Perry's", "fb": "http://www.perrysboatharbor.com/"},
+		{"name": "Spindrift", "fb": "http://www.spindriftmarina.com/"},
+		{"name": "Owl Harbor", "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"},
+		{"name": "Willow Berm", "fb": "https://www.facebook.com/willowberm?fref=ts"},
+		{"name": "Korth's Pirates' Lair", "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
+		{"name": "Lighthouse", "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
+		{"name": "Moore's Riverboat", "fb": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts"},
+		{"name": "Rosa's", "fb": "https://www.facebook.com/Rosasattowerpark"},
+		{"name": "Giusti's Place", "fb": "https://www.facebook.com/Giustis-341683185695/timeline/"},
+		{"name": "Windmill Cove", "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
+		{"name": "The Point", "fb": "https://www.facebook.com/ThePointRestaurantRioVista"},
+		{"name": "Boardwalk Grill", "fb": "https://www.facebook.com/Boardwalk-Grill-285018528287/timeline/"},
+		{"name": "Wimpy's", "fb": "https://www.facebook.com/Wimpys-Marina-405286399555382/timeline/"},
+		{"name": "Orwood", "fb": "https://www.facebook.com/orwoodresort"},
+		{"name": "Rusty Porthole", "fb": "https://www.facebook.com/Rusty-Porthole-217097898307326/timeline/"},
+		{"name": "Lost Isle", "fb": "https://www.facebook.com/groups/327403865799/"},
+		{"name": "Sugar Barge",  "fb": "https://www.facebook.com/sugar.barge?fref=ts"},
+		{"name": "Spindrift", "fb": "http://www.thespindrift.com/"},
+		{"name": "Delta Boat Works", "fb": "http://deltaboatworks.com/"}
 	]
 };
 
@@ -118,11 +123,8 @@ var noaaData = {
 	airURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
 		+"&station=9415144&product=air_temperature&units=english&time_zone=gmt&application=weather&format=json"
 	],
-
 	"labels": ["Wind Speed: ", "Water Temp: ", "Air Temp: "],
-
 	"attrs": ["s", "v", "v"],
-
 	"suffixes": ["knots", "degrees", "degrees"],
 };
 
@@ -228,6 +230,15 @@ var viewModel = {
 				draggable:true,
 			})
 		}
+		
+		//init popup information once to be used in clickMarker() later
+		var infowindow = new google.maps.InfoWindow({
+			map: map
+			});
+		this.infowindow = infowindow;
+		infowindow.close();
+
+		//for later use throughout
 		this.map = map;
 	},
 
@@ -251,7 +262,7 @@ var viewModel = {
 				id: mapMarkers[this.category][i].name,
 				icon: 'http://maps.google.com/mapfiles/ms/icons/red.png',
 			}));
-			viewModel.markers[i].addListener('click', viewModel.highlightToggle);
+			viewModel.markers[i].addListener('click', viewModel.clickMarker);
 	    	bounds.extend(new google.maps.LatLng(lat, lng));
 		}
 		this.map.fitBounds(bounds);
@@ -279,50 +290,52 @@ var viewModel = {
 	//highlightText: ko.observable(0),
 
 
+	mapPopUp: function(self) {
+		this.infowindow.close();
+
+		for (var i = 0; i < markerURLs.popups.length; i++){
+			if (self.id == markerURLs.popups[i].name){//the clicked marker matches one in the json
+				var urlTag = markerURLs.popups[i].fb;
+
+				//prep map pop up
+				var contentString = "<div><h3>" + self.id + "</h3><a>" 
+				+ urlTag + "</a></div>"
+
+				this.infowindow.setContent(contentString);
+
+				this.infowindow.open(self.map, self);
+			}
+		}
+	},
+
+
 	//when you click the marker on the map	
 	//TODO: second click needs to be taken care of, GET OF UNDEFINED error
-	highlightToggle: function() {
+	clickMarker: function() {
 		var list = document.getElementsByClassName("sideBarElems");
-
+		var self = this;
 		for (var i = 0; i < viewModel.markers.length; i++) {//check id's of all markers on map
 			var appearance = list[i].id;
 			if (list[i].innerHTML == this.id){ //if the marker id matches the sidebar name
-				//make search term red
-				list[i].setAttribute("id", "highlight");
+				
+				viewModel.mapPopUp(self);
+				
+				list[i].setAttribute("id", "highlight");//make sideBar term red
 
-				//make info bubble pop up
-				for (var i = 0; i < markerURLs.popups.length; i++){
-					if (this.id == markerURLs.popups[i].name){
-						console.log(markerURLs.popups[i].fb);
-						var urlTag = markerURLs.popups[i].fb;
-						if (!markerURLs.popups[i].fb){
-							urlTag = ""
-						}
-
-						var contentString = "<div><h3>" + this.id + "</h3><a>" 
-						+ urlTag + "</a></div>"
-
-						var infowindow = new google.maps.InfoWindow({
-						content: contentString,
-						map: this.map
-						})
-						infowindow.open(map, this);
-					}
-				}
-
-				if (appearance == "highlight") {
+				if (appearance == "highlight") {// if it's already red, make it black
 					list[i].setAttribute("id", "null");
-					infowindow.close();
 
-				}else if (appearance == "highlight") {
-					list[i].setAttribute("id", "");
+				// }else if (appearance == "highlight") {//clear it out (in case of something weird)
+				// 	list[i].setAttribute("id", "");
+				// 	infowindow.close();
+
 				}
 			}
 		}
 	},
 
 	//when you click the search term in the sidebar
-	highlightMarker: function() {
+	clickSideBar: function() {
 		for (var i = 0; i < viewModel.markers.length; i++) {
 			if (viewModel.markers[i].id == this) {
 				var marker = viewModel.markers[i];
