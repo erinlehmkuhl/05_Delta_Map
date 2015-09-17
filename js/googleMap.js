@@ -286,9 +286,23 @@ var viewModel = {
 		viewModel.addMarkers();
 	},
 
-	//0 = black, 1 = red for sideBar text
-	//highlightText: ko.observable(0),
+	initFacebook: function() {
+		window.fbAsyncInit = function() {
+			FB.init({
+			appId      : '887545611339686',
+			xfbml      : true,
+			version    : 'v2.4'
+			});
+		};
 
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	},
 
 	mapPopUp: function(self) {
 		this.infowindow.close();
@@ -297,14 +311,15 @@ var viewModel = {
 			if (self.id == markerURLs.popups[i].name){//the clicked marker matches one in the json
 				var urlTag = markerURLs.popups[i].fb;
 
-				//prep map pop up
-				var contentString = "<div><h3>" + self.id + "</h3><a href=" 
-				+ urlTag + ">click me</a></div>"
-
-				//var contentString = '<div class="fb-page" data-href="https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"></div> <div class="fb-like"data-share="true" data-width="450"data-show-faces="true"></div>';
-
+		var contentString = '<div id="iw_container">' +
+                  '<div class="iw_title">'+self.id+'</div>' +
+                  '<div class="iw_content">' +
+                  '<div class="fb-page" data-href="' + urlTag + '" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"></div>' +
+                  '<div class="fb-like"data-share="true" data-width="180"data-show-faces="true" data-small-header="true"></div>' +
+                  '</div>' +
+                  '</div>';
 				this.infowindow.setContent(contentString);
-
+				viewModel.initFacebook();// ------ this is not the correct place for this piece of code. it only works on the first click ------>>>
 				this.infowindow.open(self.map, self);
 			}
 		}

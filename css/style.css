@@ -27,3 +27,7 @@ html, body {
 td {	
 	font-size: .8em;
 }
+
+#iw_container {
+	width: 180px;
+}
