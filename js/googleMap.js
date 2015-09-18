@@ -290,7 +290,7 @@ var viewModel = {
 		window.fbAsyncInit = function() {
 			FB.init({
 			appId      : '887545611339686',
-			xfbml      : true,
+			xfbml      : false,
 			version    : 'v2.4'
 			});
 		};
