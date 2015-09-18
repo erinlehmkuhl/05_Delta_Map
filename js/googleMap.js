@@ -327,6 +327,7 @@ var viewModel = {
 
 
 	//when you click the marker on the map	
+	//TODO: make this a knockout connection
 	clickMarker: function() {
 		var list = document.getElementsByClassName("sideBarElems");
 		var self = this;
@@ -358,6 +359,7 @@ var viewModel = {
 				marker.setMap(marker.map);
 				//TODO: make that marker layered on top
 				//TODO: after clicking a second marker, make the first go back to orig icon
+				//TODO: if any term is already red, make them all black upon click
 			}
 		}
 	},
