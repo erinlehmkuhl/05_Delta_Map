@@ -83,7 +83,6 @@ var markerURLs = {
 		{"name": "The Bedrooms in Potato Slough", "fb": "www.placeholder.com"},
 		{"name": "B and W", "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-		{"name": "Tower Park Marina Resort", "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
 		{"name": "Discovery Bay", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
 		{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
 		{"name": "Whiskey Slough", "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
@@ -287,21 +286,24 @@ var viewModel = {
 	},
 
 	initFacebook: function() {
-		window.fbAsyncInit = function() {
+					window.fbAsyncInit = function() {
 			FB.init({
 			appId      : '887545611339686',
-			xfbml      : false,
+			xfbml      : true,
 			version    : 'v2.4'
 			});
 		};
 
-		(function(d, s, id){
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) {return;}
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/en_US/sdk.js";
-				fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  console.log(d.getElementById(id));
+  if (d.getElementById(id)) return;//this is the guy that stops my new id from coming through i think------->>>>>!!!!
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=887545611339686";
+  fjs.parentNode.insertBefore(js, fjs);
+
+}
+(document, 'script', 'facebook-jssdk'));
 	},
 
 	mapPopUp: function(self) {
@@ -310,20 +312,21 @@ var viewModel = {
 		for (var i = 0; i < markerURLs.popups.length; i++){
 			if (self.id == markerURLs.popups[i].name){//the clicked marker matches one in the json
 				var urlTag = markerURLs.popups[i].fb;
+				
+				viewModel.initFacebook();
 
-		var contentString = '<div id="iw_container">' +
-                  '<div class="iw_title">'+self.id+'</div>' +
-                  '<div class="iw_content">' +
-                  '<div class="fb-page" data-href="' + urlTag + '" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"></div>' +
-                  '<div class="fb-like"data-share="true" data-width="180"data-show-faces="true" data-small-header="true"></div>' +
-                  '</div>' +
-                  '</div>';
+				var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + urlTag+ '" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div></div>';
 				this.infowindow.setContent(contentString);
-				viewModel.initFacebook();// ------ this is not the correct place for this piece of code. it only works on the first click ------>>>
 				this.infowindow.open(self.map, self);
+//attempt to clear out the old id information and allow a new request to go through. ------>>>>>>>>>>!!!!!!!!!
+				// if (document.getElementById('facebook-jssdk')) {
+				// 	var oldOne = document.getElementById('facebook-jssdk');
+				// 	oldOne.setAttribute("id", "null");
+				};
 			}
 		}
 	},
+
 
 
 	//when you click the marker on the map	
@@ -389,8 +392,5 @@ var viewModel = {
 };
 viewModel.init();
 ko.applyBindings(viewModel);
-
-
-
 
 
