@@ -286,28 +286,31 @@ var viewModel = {
 	},
 
 	initFacebook: function() {
-					window.fbAsyncInit = function() {
+		window.fbAsyncInit = function() {
 			FB.init({
 			appId      : '887545611339686',
 			xfbml      : true,
 			version    : 'v2.4'
 			});
+			console.log(FB);
 		};
 
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  console.log(d.getElementById(id));
-  if (d.getElementById(id)) return;//this is the guy that stops my new id from coming through i think------->>>>>!!!!
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=887545611339686";
-  fjs.parentNode.insertBefore(js, fjs);
+		
+		var js = document.createElement("script"); 
+		js.id = 'facebook-jssdk';
 
-}
-(document, 'script', 'facebook-jssdk'));
+		var fjs = document.getElementsByTagName("script")[0];
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=887545611339686";
+
+		fjs.parentNode.insertBefore(js, fjs);
+		
+
+		//FB.XFBML.parse();
 	},
 
 	mapPopUp: function(self) {
 		this.infowindow.close();
+
 
 		for (var i = 0; i < markerURLs.popups.length; i++){
 			if (self.id == markerURLs.popups[i].name){//the clicked marker matches one in the json
@@ -315,14 +318,10 @@ var viewModel = {
 				
 				viewModel.initFacebook();
 
-				var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + urlTag+ '" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div></div>';
+				var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + urlTag+ '" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + urlTag + '"><a href="' + urlTag + '">click me</a></blockquote></div></div>';
 				this.infowindow.setContent(contentString);
 				this.infowindow.open(self.map, self);
-//attempt to clear out the old id information and allow a new request to go through. ------>>>>>>>>>>!!!!!!!!!
-				// if (document.getElementById('facebook-jssdk')) {
-				// 	var oldOne = document.getElementById('facebook-jssdk');
-				// 	oldOne.setAttribute("id", "null");
-				};
+				
 			}
 		}
 	},
