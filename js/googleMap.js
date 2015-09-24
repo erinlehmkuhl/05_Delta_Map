@@ -329,7 +329,7 @@ var viewModel = {
 		for (var i = 0; i < viewModel.markers.length; i++) {//check id's of all markers on map
 			var indivAppearance = list[i].id;
 
-			if (indivAppearance == "highlight") {//if a searchTerm is alread red
+			if (indivAppearance == "highlight") {//if a sidebarTerm is alread red
 				list[i].setAttribute("id", "null");//set it to black
 
 			}else {
@@ -375,8 +375,18 @@ var viewModel = {
 		viewModel.resetSideBar();
 	},
 
+
+//_________working area--------------------//
+	searchTerm: ko.observable(),
 	searchArray: function() {
 
+		console.log(viewModel.searchTerm());
+		// if (letters in textfield){
+		// 	put all matching words from json in an ko.array
+		// 	for (each letter in the array){
+		// 		sort the array
+		// 	}
+		// }
 	}
 
 

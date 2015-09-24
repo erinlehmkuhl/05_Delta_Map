@@ -27,8 +27,9 @@
     </div>
     <hr>
       <form id="searchBar"> 
-        <input>
-        <button type="submit">Search</button>
+        <input data-bind="value: searchTerm">
+        <p data-bind="text: searchTerm"></p>
+        <button type="submit" data-bind="click: searchArray">Search</button>
         <button type="reset" data-bind="click: clearSearch">Clear</button>
       </form>
     <div id= "mapArea">
