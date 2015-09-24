@@ -140,6 +140,7 @@ var viewModel = {
 			menuBar.appendChild(iconButton);
 		}
 		viewModel.noaaRequest();
+		viewModel.initFacebook();
 	},
 
 	statWind: ko.observable("Wind Speed: not available"),
@@ -286,44 +287,35 @@ var viewModel = {
 	},
 
 	initFacebook: function() {
-		window.fbAsyncInit = function() {
-			FB.init({
-			appId      : '887545611339686',
-			xfbml      : true,
-			version    : 'v2.4'
-			});
-			console.log(FB);
-		};
+      window.fbAsyncInit = function() {
+        FB.init({
+        appId      : '887545611339686',
+        xfbml      : true,
+        version    : 'v2.4'
+        });
+      };
 
-		
-		var js = document.createElement("script"); 
-		js.id = 'facebook-jssdk';
-
-		var fjs = document.getElementsByTagName("script")[0];
-		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=887545611339686";
-
-		fjs.parentNode.insertBefore(js, fjs);
-		
-
-		//FB.XFBML.parse();
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
 	},
 
 	mapPopUp: function(self) {
 		this.infowindow.close();
 
-
 		for (var i = 0; i < markerURLs.popups.length; i++){
 			if (self.id == markerURLs.popups[i].name){//the clicked marker matches one in the json
 				var urlTag = markerURLs.popups[i].fb;
-				
-				viewModel.initFacebook();
 
 				var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + urlTag+ '" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + urlTag + '"><a href="' + urlTag + '">click me</a></blockquote></div></div>';
 				this.infowindow.setContent(contentString);
 				this.infowindow.open(self.map, self);
-				
 			}
-		}
+		}FB.XFBML.parse();
 	},
 
 
