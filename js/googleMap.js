@@ -243,19 +243,19 @@ var viewModel = {
 	markers: [],
 
 	//set markers and bounds based on json information
-	addMarkers: function() {
-		var loopLength = mapMarkers[this.category].length;
+	addMarkers: function(listOfMarkers) {
+		var loopLength = listOfMarkers.length;
 		var bounds = new google.maps.LatLngBounds();
 		for (i = 0; i < loopLength; i++) {
-			var lat = mapMarkers[this.category][i].center.lat;
-			var lng =  mapMarkers[this.category][i].center.lng;
-			var location = mapMarkers[this.category][i]['center'];
+			var lat = listOfMarkers[i].center.lat;
+			var lng =  listOfMarkers[i].center.lng;
+			var location = listOfMarkers[i]['center'];
 			
 			viewModel.markers.push(new google.maps.Marker({
 				position: location,
 				map: this.map,
 				animation: google.maps.Animation.DROP,
-				id: mapMarkers[this.category][i].name,
+				id: listOfMarkers[i].name,
 				icon: 'http://maps.google.com/mapfiles/ms/icons/red.png',
 			}));
 			viewModel.markers[i].addListener('click', viewModel.clickMarker);
@@ -323,21 +323,26 @@ var viewModel = {
 		viewModel.resetSideBar();
 		viewModel.clearMarkers();
 		viewModel.addSideBarInfo();
-		viewModel.addMarkers();
+		viewModel.addMarkers(mapMarkers[this.category]);
 	},
 
 	sideBarArray: ko.observableArray(),
 
 	searchTerm: ko.observable(),// the input box on HTML form
+	ph: ko.observable("locations"),
 
+	//TODO: only adds right now. needs to resort or clear away others
 	searchArray: function() {
+		viewModel.clearSearch();
+		var markerList = [];
 		var regexInput = new RegExp(viewModel.searchTerm(), "i");//properly formats the regex from the userInput
 
 		$.each(viewModel.searchCategories, function(i, val){//return all json categories
 			var cat = val;	
 	
 			$.each(mapMarkers[cat], function(i, val){//return all json location names
-				var nameForList = mapMarkers[cat][i]["name"]; 
+				var nameForList = mapMarkers[cat][i]["name"];
+				var centerForList = mapMarkers[cat][i];
 				var nameStr = nameForList.toString();
 				var regexResult = regexInput.test(nameStr);
 				
@@ -353,10 +358,12 @@ var viewModel = {
 				
 				if (nameForList != "duplicate" && nameForList != "notSearchedFor"){//avoid these names
 					viewModel.sideBarArray.push(nameForList);//now add the accepted names one by one
+					markerList.push(centerForList);
 					viewModel.sideBarArray.sort();
 				}
 			})
 		})
+		viewModel.addMarkers(markerList);
 	},
 
 	//populates names in side bar
