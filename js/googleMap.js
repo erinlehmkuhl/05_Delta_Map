@@ -113,7 +113,6 @@ var markerURLs = {
 
 
 var noaaData = {
-
 	"urls": [
 	windURL = "http://tidesandcurrents.noaa.gov/api/datagetter?date=latest"
 		+"&station=9415144&product=wind&units=english&time_zone=gmt&application=weather&format=json",
@@ -130,7 +129,11 @@ var noaaData = {
 
 var viewModel = {
 
-	//initialize page with menu bar, map and underwater obstruction map markers 
+	//------------- Initialize HTML, Google and FB --------------//
+
+	searchCategories: Object.keys(mapMarkers),// a variable for the search category buttons
+
+	//load the category buttons from the JSON into the HTML at page load
 	init: function() {
 		var menuBar = document.getElementById('menuBar');
 		for (var i = 0; i < viewModel.searchCategories.length; i++) {
@@ -143,37 +146,7 @@ var viewModel = {
 		viewModel.initFacebook();
 	},
 
-	statWind: ko.observable("Wind Speed: not available"),
-	statWater: ko.observable("Water Temperature: not available"),
-	statAir: ko.observable("Air Temperature: not available"),
-
-
-	noaaRequest: function(data) {
-		var noaaFunctions = [viewModel.statWind, viewModel.statWater, viewModel.statAir];
-
-		$.each(noaaData.urls, function (i) {
-			//format url for Yahoo proxy
-			var yql = 'http://query.yahooapis.com/v1/public/yql?'
-	        	+ 'q=' + encodeURIComponent('select * from json where url=@url')
-	        	+ '&url=' + encodeURIComponent(noaaData.urls[i])
-	        	+ '&format=json&callback=?';
-
-	        //parse data from each URL and push it to HTML through knockout.js
-			$.getJSON(yql,
-			  function (data) {
-			  	var noaaLabel = noaaData.labels[i];
-			  	var noaaSuffix = noaaData.suffixes[i];
-			  	var noaaAttr = noaaData.attrs[i];
-			  	var noaaValue = data.query.results.json.data[noaaAttr];
-			  	var noaaFunction = noaaFunctions[i];
-			  	noaaFunction(noaaLabel + " " + noaaValue + " " + noaaSuffix);
-			});
-		})
-    },
-
-	searchCategories: Object.keys(mapMarkers),
-
-
+	//TODO: set up user location so the map re-centers to user if they are in appropriate range
 	userLocation: function(map) {
 		var initialLocation = new google.maps.LatLng(38.103, -121.572);
 		// Try W3C Geolocation (Preferred)
@@ -202,6 +175,7 @@ var viewModel = {
 			}
 		},
 
+	//Google's API. Initialized from the HTML as a callback to the API function
 	initMap: function() {
 		//draw map
 		var mapDiv = document.getElementById('map');
@@ -216,7 +190,7 @@ var viewModel = {
 		// TODO: use this OR the preset if user out of range
 		// viewModel.userLocation(map);
 
-		// draw the obstruction markers on the map
+		// draw the known obstruction markers on the map
 		for (var i = 0; i < mapMarkers.obstructions.length; i++) {
 			new google.maps.Circle({
 				strokeColor: '#FF0000',
@@ -238,11 +212,33 @@ var viewModel = {
 		this.infowindow = infowindow;
 		infowindow.close();
 
-		//for later use throughout
+		//variable for later use throughout
 		this.map = map;
 	},
 
-	sideBarArray: ko.observableArray(),
+	//Facebook API: aside from the appID, this is cut/pasted from FB
+	initFacebook: function() {
+      window.fbAsyncInit = function() {
+        FB.init({
+        appId      : '887545611339686',
+        xfbml      : true,
+        version    : 'v2.4'
+        });
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+	},
+
+
+
+
+	//------------- Map Markers --------------//
 
 	markers: [],
 
@@ -269,41 +265,6 @@ var viewModel = {
 	},
 
 
-	//populates names in side bar
-	addSideBarInfo: function(){
-		for (marker in mapMarkers[this.category]){
-			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
-			this.sideBarArray.sort();
-		}
-	},
-
-	
-	categoryClick: function() {
-		this.category = event.target.innerHTML;
-		viewModel.resetSideBar();
-		viewModel.clearMarkers();
-		viewModel.addSideBarInfo();
-		viewModel.addMarkers();
-	},
-
-	initFacebook: function() {
-      window.fbAsyncInit = function() {
-        FB.init({
-        appId      : '887545611339686',
-        xfbml      : true,
-        version    : 'v2.4'
-        });
-      };
-
-      (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-	},
-
 	mapPopUp: function(self) {
 		this.infowindow.close();
 
@@ -311,14 +272,16 @@ var viewModel = {
 			if (self.id == markerURLs.popups[i].name){//the clicked marker matches one in the json
 				var urlTag = markerURLs.popups[i].fb;
 
-				var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + urlTag+ '" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + urlTag + '"><a href="' + urlTag + '">click me</a></blockquote></div></div>';
+				var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + urlTag + 
+				'" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false"' +
+				' data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + 
+				urlTag + '"><a href="' + urlTag + '">click me</a></blockquote></div></div>';
+
 				this.infowindow.setContent(contentString);
 				this.infowindow.open(self.map, self);
 			}
 		}FB.XFBML.parse();
 	},
-
-
 
 	//when you click the marker on the map	
 	//TODO: make this a knockout connection
@@ -334,16 +297,59 @@ var viewModel = {
 
 			}else {
 				if (list[i].innerHTML == this.id){ //if the marker id matches the sidebar name
-					
 					viewModel.mapPopUp(self);//pop up infowindow
-					
 					list[i].setAttribute("id", "highlight");//make sideBar term red
 				}
 			}
 		}
+	},	
+
+
+	clearMarkers: function() {
+  		for (var i = 0; i < viewModel.markers.length; i++) {
+    		viewModel.markers[i].setMap(null);
+  		}
+  		viewModel.markers = [];
 	},
 
-	//when you click the search term in the sidebar
+
+
+
+	//------------- Side Bar  --------------//
+
+	categoryClick: function() {
+		this.category = event.target.innerHTML;
+		viewModel.resetSideBar();
+		viewModel.clearMarkers();
+		viewModel.addSideBarInfo();
+		viewModel.addMarkers();
+	},
+
+	sideBarArray: ko.observableArray(),
+
+	searchTerm: ko.observable(),// the input box on HTML form
+
+	searchArray: function() {
+
+		console.log(viewModel.searchTerm());
+		// if (letters in textfield){
+		// 	put all matching words from json in an ko.array
+		// 	for (each letter in the array){
+		// 		sort the array
+		// 	}
+		// }
+	},
+
+	//populates names in side bar
+	addSideBarInfo: function(){
+		for (marker in mapMarkers[this.category]){
+			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
+			
+		}
+		this.sideBarArray.sort();
+	},
+
+	//when you click a name in the sidebar
 	clickSideBar: function() {
 		for (var i = 0; i < viewModel.markers.length; i++) {
 			if (viewModel.markers[i].id == this) {
@@ -362,13 +368,6 @@ var viewModel = {
 		this.sideBarArray([]);
 	},
 
-	clearMarkers: function() {
-  		for (var i = 0; i < viewModel.markers.length; i++) {
-    		viewModel.markers[i].setMap(null);
-  		}
-  		viewModel.markers = [];
-		},
-
 
 	clearSearch: function() {
 		viewModel.clearMarkers();
@@ -376,19 +375,36 @@ var viewModel = {
 	},
 
 
-//_________working area--------------------//
-	searchTerm: ko.observable(),
-	searchArray: function() {
 
-		console.log(viewModel.searchTerm());
-		// if (letters in textfield){
-		// 	put all matching words from json in an ko.array
-		// 	for (each letter in the array){
-		// 		sort the array
-		// 	}
-		// }
-	}
+	
+	//------------- NOAA API for weather at top of page  --------------//
 
+	statWind: ko.observable("Wind Speed: not available"),
+	statWater: ko.observable("Water Temperature: not available"),
+	statAir: ko.observable("Air Temperature: not available"),
+
+	noaaRequest: function(data) {
+		var noaaFunctions = [viewModel.statWind, viewModel.statWater, viewModel.statAir];
+
+		$.each(noaaData.urls, function (i) {
+			//format url for Yahoo proxy
+			var yql = 'http://query.yahooapis.com/v1/public/yql?'
+	        	+ 'q=' + encodeURIComponent('select * from json where url=@url')
+	        	+ '&url=' + encodeURIComponent(noaaData.urls[i])
+	        	+ '&format=json&callback=?';
+
+	        //parse data from each URL and push it to HTML through knockout.js
+			$.getJSON(yql,
+			  function (data) {
+			  	var noaaLabel = noaaData.labels[i];
+			  	var noaaSuffix = noaaData.suffixes[i];
+			  	var noaaAttr = noaaData.attrs[i];
+			  	var noaaValue = data.query.results.json.data[noaaAttr];
+			  	var noaaFunction = noaaFunctions[i];
+			  	noaaFunction(noaaLabel + " " + noaaValue + " " + noaaSuffix);
+			});
+		})
+    },
 
 };
 viewModel.init();
