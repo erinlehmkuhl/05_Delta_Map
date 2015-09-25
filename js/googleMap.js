@@ -317,6 +317,7 @@ var viewModel = {
 
 	//------------- Side Bar  --------------//
 
+	//populates side bar
 	categoryClick: function() {
 		this.category = event.target.innerHTML;
 		viewModel.resetSideBar();
@@ -330,14 +331,32 @@ var viewModel = {
 	searchTerm: ko.observable(),// the input box on HTML form
 
 	searchArray: function() {
+		var regexInput = new RegExp(viewModel.searchTerm(), "i");//properly formats the regex from the userInput
 
-		console.log(viewModel.searchTerm());
-		// if (letters in textfield){
-		// 	put all matching words from json in an ko.array
-		// 	for (each letter in the array){
-		// 		sort the array
-		// 	}
-		// }
+		$.each(viewModel.searchCategories, function(i, val){//return all json categories
+			var cat = val;	
+	
+			$.each(mapMarkers[cat], function(i, val){//return all json location names
+				var nameForList = mapMarkers[cat][i]["name"]; 
+				var nameStr = nameForList.toString();
+				var regexResult = regexInput.test(nameStr);
+				
+				if (regexResult == false) {//if the word in the list above doesn't match the search bar
+					nameForList = "notSearchedFor"; //label it so it get's thrown out
+				}
+
+				for (var i = 0; i < viewModel.sideBarArray().length; i++) {//as the knockoutArray fills, it checks what's in it
+					if (nameForList == viewModel.sideBarArray()[i]){//if there is a duplicate
+						nameForList = "duplicate";//mark it to be thrown out
+					}
+				}
+				
+				if (nameForList != "duplicate" && nameForList != "notSearchedFor"){//avoid these names
+					viewModel.sideBarArray.push(nameForList);//now add the accepted names one by one
+					viewModel.sideBarArray.sort();
+				}
+			})
+		})
 	},
 
 	//populates names in side bar
@@ -372,7 +391,19 @@ var viewModel = {
 	clearSearch: function() {
 		viewModel.clearMarkers();
 		viewModel.resetSideBar();
+		document.getElementById("searchBar").reset();
 	},
+
+	// searchJson: function (whatToSearchFor) {//can only be: "name", "center" or "fb"
+	// 	var myArray = [];
+	// 	$.each(viewModel.searchCategories, function(i, val){//return all json categories
+	// 		var cat = val;			
+	// 		$.each(mapMarkers[cat], function(i, val){//return all json location names
+	// 			var nameForList = mapMarkers[cat][i][whatToSearchFor]; 
+	// 			myArray.push(nameForList);
+
+	// 			return myArray;
+	// },
 
 
 
