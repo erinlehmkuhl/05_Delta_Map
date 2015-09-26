@@ -266,8 +266,8 @@ var viewModel = {
 
 
 	mapPopUp: function(self) {
+		console.log(self);
 		this.infowindow.close();
-
 		for (var i = 0; i < markerURLs.popups.length; i++){
 			if (self.id == markerURLs.popups[i].name){//the clicked marker matches one in the json
 				var urlTag = markerURLs.popups[i].fb;
@@ -383,6 +383,10 @@ var viewModel = {
 				marker.icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 				marker.map.panTo(marker.getPosition());
 				marker.setMap(marker.map);
+				marker.id = this.toString();
+
+
+				viewModel.mapPopUp(marker);//pop up infowindow
 				//TODO: make that marker layered on top
 				//TODO: after clicking a second marker, make the first go back to orig icon
 				//TODO: if any term is already red, make them all black upon click
@@ -412,6 +416,22 @@ var viewModel = {
 	// 			return myArray;
 	// },
 
+	retrieveJsonObject: function(name) {//input name property of Json OBJ you want
+		var inputClick = (name.toString());
+		var markerList = [];
+		$.each(viewModel.searchCategories, function(i, val){//return all json categories
+			var category = val;	
+			$.each(mapMarkers[category], function(i, val){//return all json location names
+				var name = mapMarkers[category][i]["name"];
+				if (inputClick == name) {
+					var markerCenter = mapMarkers[category][i];
+					markerList.push(markerCenter);
+				}
+			})
+		})
+		return markerList[0];
+	},
+
 
 
 	
@@ -423,6 +443,7 @@ var viewModel = {
 
 	noaaRequest: function(data) {
 		var noaaFunctions = [viewModel.statWind, viewModel.statWater, viewModel.statAir];
+		var highWinds = document.getElementsByClassName
 
 		$.each(noaaData.urls, function (i) {
 			//format url for Yahoo proxy
@@ -439,8 +460,10 @@ var viewModel = {
 			  	var noaaAttr = noaaData.attrs[i];
 			  	var noaaValue = data.query.results.json.data[noaaAttr];
 			  	var noaaFunction = noaaFunctions[i];
+
 			  	noaaFunction(noaaLabel + " " + noaaValue + " " + noaaSuffix);
 			});
+
 		})
     },
 
