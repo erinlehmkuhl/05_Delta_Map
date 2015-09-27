@@ -1,12 +1,12 @@
 var mapMarkers = {
 	"obstructions": [
-		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}}, 
-		{"name": "Embedded Log", "center": {lat: 38.1200, lng: -121.5855}}
+		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}, "url": "http://www.vesselassistsanfrancisco.com/"},
+		{"name": "Embedded Log", "center": {lat: 38.1200, lng: -121.5855}, "url": "http://www.vesselassistsanfrancisco.com/"}
 	],
 	"anchorages": [
-		{"name": "The Meadows", "center": {lat: 38.2509717, lng: -121.497613}},
-		{"name": "Mandaville Tip", "center": {lat: 38.0618274, lng: -121.5345715}},
-		{"name": "The Bedrooms in Potato Slough", "center": {lat: 38.0841627, lng: -121.538574}}
+		{"name": "The Meadows", "center": {lat: 38.2509717, lng: -121.497613}, "url": "http://www.parks.ca.gov/?page_id=492"},
+		{"name": "Mandeville Tip", "center": {lat: 38.0618274, lng: -121.5345715}, "url": "http://dbw.parks.ca.gov/maps/facilityinfo.asp?facilityID=1217"},
+		{"name": "The Bedrooms in Potato Slough", "center": {lat: 38.0841627, lng: -121.538574}, "url": "https://www.google.com/search?q=potato+slough+california+delta&biw=1013&bih=637&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIvvu29NmXyAIVypWICh2iOQmF"}
 	],
 	"restaurants": [
 		{"name": "Korth's Pirates' Lair", "center": {lat: 38.0977543, lng: -121.5680157}, "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
@@ -25,11 +25,11 @@ var mapMarkers = {
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
 		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}, "fb": "https://www.facebook.com/groups/327403865799/"},
 		{"name": "Sugar Barge", "center": {lat: 38.0280595, lng: -121.6116769}, "fb": "https://www.facebook.com/sugar.barge?fref=ts"},
-		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "fb": "http://www.thespindrift.com/"}
+		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "url": "http://www.thespindrift.com/"}
 	],
 	"repairs": [
-		{"name": "Delta Boat Works", "center": {lat: 38.0997402, lng: -121.5669706}, "fb": "http://deltaboatworks.com/"},
-		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "fb": "http://www.perrysboatharbor.com/"},
+		{"name": "Delta Boat Works", "center": {lat: 38.0997402, lng: -121.5669706}, "url": "http://deltaboatworks.com/"},
+		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "url": "http://www.perrysboatharbor.com/"},
 		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
 	],
 	"gas": [
@@ -46,8 +46,8 @@ var mapMarkers = {
 		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
-		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "fb": "http://www.perrysboatharbor.com/"},
-		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "fb": "http://www.spindriftmarina.com/"},
+		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "url": "http://www.perrysboatharbor.com/"},
+		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "url": "http://www.spindriftmarina.com/"},
 		{"name": "Owl Harbor", "center": {lat: 38.1162493, lng: -121.6257876}, "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"}
 	],
 	"rentals": [
@@ -71,43 +71,6 @@ var mapMarkers = {
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
 		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
-	]
-};
-
-var markerURLs = {
-	"popups": [
-		{"name": "Submerged Tree", "fb": "www.placeholder.com"},  
-		{"name": "Embedded Log",  "fb": "www.placeholder.com"},
-		{"name": "The Meadows",  "fb": "www.placeholder.com"},
-		{"name": "Mandaville Tip", "fb": "www.placeholder.com"},
-		{"name": "The Bedrooms in Potato Slough", "fb": "www.placeholder.com"},
-		{"name": "B and W", "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
-		{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-		{"name": "Discovery Bay", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-		{"name": "Paradise Point", "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-		{"name": "Whiskey Slough", "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
-		{"name": "Stockton Delta KOA", "fb": "https://www.facebook.com/StocktonKOA"},
-		{"name": "Lighthouse", "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
-		{"name": "Tower Park Marina Resort", "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
-		{"name": "Perry's", "fb": "http://www.perrysboatharbor.com/"},
-		{"name": "Spindrift", "fb": "http://www.spindriftmarina.com/"},
-		{"name": "Owl Harbor", "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"},
-		{"name": "Willow Berm", "fb": "https://www.facebook.com/willowberm?fref=ts"},
-		{"name": "Korth's Pirates' Lair", "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
-		{"name": "Lighthouse", "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
-		{"name": "Moore's Riverboat", "fb": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts"},
-		{"name": "Rosa's", "fb": "https://www.facebook.com/Rosasattowerpark"},
-		{"name": "Giusti's Place", "fb": "https://www.facebook.com/Giustis-341683185695/timeline/"},
-		{"name": "Windmill Cove", "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
-		{"name": "The Point", "fb": "https://www.facebook.com/ThePointRestaurantRioVista"},
-		{"name": "Boardwalk Grill", "fb": "https://www.facebook.com/Boardwalk-Grill-285018528287/timeline/"},
-		{"name": "Wimpy's", "fb": "https://www.facebook.com/Wimpys-Marina-405286399555382/timeline/"},
-		{"name": "Orwood", "fb": "https://www.facebook.com/orwoodresort"},
-		{"name": "Rusty Porthole", "fb": "https://www.facebook.com/Rusty-Porthole-217097898307326/timeline/"},
-		{"name": "Lost Isle", "fb": "https://www.facebook.com/groups/327403865799/"},
-		{"name": "Sugar Barge",  "fb": "https://www.facebook.com/sugar.barge?fref=ts"},
-		{"name": "Spindrift", "fb": "http://www.thespindrift.com/"},
-		{"name": "Delta Boat Works", "fb": "http://deltaboatworks.com/"}
 	]
 };
 
@@ -266,16 +229,24 @@ var viewModel = {
 
 
 	mapPopUp: function(self) {
-		console.log(self);
 		this.infowindow.close();
-		for (var i = 0; i < markerURLs.popups.length; i++){
-			if (self.id == markerURLs.popups[i].name){//the clicked marker matches one in the json
-				var urlTag = markerURLs.popups[i].fb;
 
-				var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + urlTag + 
-				'" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false"' +
-				' data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + 
-				urlTag + '"><a href="' + urlTag + '">click me</a></blockquote></div></div>';
+		var fbs = viewModel.retrieveJsonArray("fb");
+		var urls = viewModel.retrieveJsonArray("url");
+		var names = viewModel.retrieveJsonArray("name");
+		for (var i = 0; i < names.length; i++){
+			if (self.id == names[i]){//the clicked marker matches one in the json
+				var fbTag = fbs[i];
+				var urlTag = urls[i];
+
+				if (fbTag != undefined) {
+					var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + fbTag + 
+					'" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false"' +
+					' data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + 
+					fbTag + '"><a href="' + fbTag + '">click me</a></blockquote></div></div>';
+				} else {
+					var contentString = '<div><h3>' + self.id + '</h3><a href= "' + urlTag + '">more info</a></div>';
+				}
 
 				this.infowindow.setContent(contentString);
 				this.infowindow.open(self.map, self);
@@ -331,7 +302,7 @@ var viewModel = {
 	searchTerm: ko.observable(),// the input box on HTML form
 	ph: ko.observable("locations"),
 
-	//TODO: only adds right now. needs to resort or clear away others
+	//creates sideBar that is affected by a json search
 	searchArray: function() {
 		viewModel.clearSearch();
 		var markerList = [];
@@ -370,7 +341,6 @@ var viewModel = {
 	addSideBarInfo: function(){
 		for (marker in mapMarkers[this.category]){
 			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
-			
 		}
 		this.sideBarArray.sort();
 	},
@@ -405,18 +375,20 @@ var viewModel = {
 		document.getElementById("searchBar").reset();
 	},
 
-	// searchJson: function (whatToSearchFor) {//can only be: "name", "center" or "fb"
-	// 	var myArray = [];
-	// 	$.each(viewModel.searchCategories, function(i, val){//return all json categories
-	// 		var cat = val;			
-	// 		$.each(mapMarkers[cat], function(i, val){//return all json location names
-	// 			var nameForList = mapMarkers[cat][i][whatToSearchFor]; 
-	// 			myArray.push(nameForList);
+	retrieveJsonArray: function (whatToSearchFor) {//can only be: "name", "center" or "fb"
+		var urlList = [];
+		$.each(viewModel.searchCategories, function(i, val){//return all json categories
+			var category = val;			
+			$.each(mapMarkers[category], function(i, val){//return all json location names
+				var name = mapMarkers[category][i][whatToSearchFor]; 
+				urlList.push(name);
+			})
+		})
+		return urlList;
+	},
 
-	// 			return myArray;
-	// },
-
-	retrieveJsonObject: function(name) {//input name property of Json OBJ you want
+	//TODO: use this in searchArray
+	retrieveJsonObject: function(name) {//only works with specific name input - like upon marker click or sideBar click
 		var inputClick = (name.toString());
 		var markerList = [];
 		$.each(viewModel.searchCategories, function(i, val){//return all json categories
