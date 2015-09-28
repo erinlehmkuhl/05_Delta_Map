@@ -30,19 +30,19 @@ var mapMarkers = {
 	"repairs": [
 		{"name": "Delta Boat Works", "center": {lat: 38.0997402, lng: -121.5669706}, "url": "http://deltaboatworks.com/"},
 		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "url": "http://www.perrysboatharbor.com/"},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
 	],
 	"gas": [
 		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"}
 	],
 	"berthing": [
 		{"name": "Discovery Bay", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
 		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}, "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
 		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
@@ -51,7 +51,7 @@ var mapMarkers = {
 		{"name": "Owl Harbor", "center": {lat: 38.1162493, lng: -121.6257876}, "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"}
 	],
 	"rentals": [
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"},
 		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}, "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"}
 	],
@@ -70,7 +70,7 @@ var mapMarkers = {
 	"stores": [
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
+		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324"}
 	]
 };
 
@@ -254,8 +254,7 @@ var viewModel = {
 		}FB.XFBML.parse();
 	},
 
-	//when you click the marker on the map	
-	//TODO: make this a knockout connection
+	//when you click the marker on the map, toggle corresponding side bar word red/black
 	clickMarker: function() {
 		var list = document.getElementsByClassName("sideBarElems");
 		var self = this;
