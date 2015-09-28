@@ -303,11 +303,10 @@ var viewModel = {
 	ph: ko.observable("locations"),
 
 	//creates sideBar that is affected by a json search
-	searchArray: function() {
+	searchButton: function() {
 		viewModel.clearSearch();
 		var markerList = [];
 		var regexInput = new RegExp(viewModel.searchTerm(), "i");//properly formats the regex from the userInput
-
 		$.each(viewModel.searchCategories, function(i, val){//return all json categories
 			var cat = val;	
 	
@@ -335,6 +334,7 @@ var viewModel = {
 			})
 		})
 		viewModel.addMarkers(markerList);
+		viewModel.searchTerm("");//to clear the memory of the search bar
 	},
 
 	//populates names in side bar
@@ -387,7 +387,7 @@ var viewModel = {
 		return urlList;
 	},
 
-	//TODO: use this in searchArray
+	//TODO: use this in searchButton()
 	retrieveJsonObject: function(name) {//only works with specific name input - like upon marker click or sideBar click
 		var inputClick = (name.toString());
 		var markerList = [];
