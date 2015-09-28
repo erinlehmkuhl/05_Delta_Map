@@ -11,7 +11,7 @@ var mapMarkers = {
 	"restaurants": [
 		{"name": "Korth's Pirates' Lair", "center": {lat: 38.0977543, lng: -121.5680157}, "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
 		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}, "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
-		{"name": "Moore's Riverboat", "center": {lat: 38.1007412, lng: -121.5658718}, "fb": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts"},
+		{"name": "Moore's Riverboat", "center": {lat: 38.1007412, lng: -121.5658718}, "url": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts"},
 		{"name": "Rosa's", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/Rosasattowerpark"},
 		{"name": "Giusti's Place", "center": {lat: 38.2242578, lng: -121.5071795}, "fb": "https://www.facebook.com/Giustis-341683185695/timeline/"},
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
@@ -23,8 +23,8 @@ var mapMarkers = {
 	],
 	"bars": [
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
-		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}, "fb": "https://www.facebook.com/groups/327403865799/"},
-		{"name": "Sugar Barge", "center": {lat: 38.0280595, lng: -121.6116769}, "fb": "https://www.facebook.com/sugar.barge?fref=ts"},
+		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}, "url": "https://www.facebook.com/groups/327403865799/"},
+		{"name": "Sugar Barge", "center": {lat: 38.0280595, lng: -121.6116769}, "url": "https://www.facebook.com/sugar.barge?fref=ts"},
 		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "url": "http://www.thespindrift.com/"}
 	],
 	"repairs": [
@@ -259,16 +259,24 @@ var viewModel = {
 		var list = document.getElementsByClassName("sideBarElems");
 		var self = this;
 
+		viewModel.resetMarkerColor();
+
 		for (var i = 0; i < viewModel.markers.length; i++) {//check id's of all markers on map
 			var indivAppearance = list[i].id;
-
 			if (indivAppearance == "highlight") {//if a sidebarTerm is alread red
 				list[i].setAttribute("id", "null");//set it to black
 
 			}else {
+				console.log(this.id);
 				if (list[i].innerHTML == this.id){ //if the marker id matches the sidebar name
 					viewModel.mapPopUp(self);//pop up infowindow
 					list[i].setAttribute("id", "highlight");//make sideBar term red
+					
+					//highlight marker
+					this.icon = 'http://maps.google.com/mapfiles/ms/icons/green.png';
+					//this.map.panTo(this.getPosition());
+					this.setMap(this.map);
+					this.setZIndex(1);
 				}
 			}
 		}
@@ -304,35 +312,37 @@ var viewModel = {
 	//creates sideBar that is affected by a json search
 	searchButton: function() {
 		viewModel.clearSearch();
+
 		var markerList = [];
 		var regexInput = new RegExp(viewModel.searchTerm(), "i");//properly formats the regex from the userInput
+		
 		$.each(viewModel.searchCategories, function(i, val){//return all json categories
-			var cat = val;	
-	
-			$.each(mapMarkers[cat], function(i, val){//return all json location names
-				var nameForList = mapMarkers[cat][i]["name"];
-				var centerForList = mapMarkers[cat][i];
-				var nameStr = nameForList.toString();
-				var regexResult = regexInput.test(nameStr);
+			var category = val;	
+			$.each(mapMarkers[category], function(i, val){
+				var name = mapMarkers[category][i]["name"];//return all json location names
+				var nameStr = name.toString();
+				var center = mapMarkers[category][i];//return all json location lat/long
+				
+				var regexResult = regexInput.test(nameStr);//test if name = userInput from search
 				
 				if (regexResult == false) {//if the word in the list above doesn't match the search bar
-					nameForList = "notSearchedFor"; //label it so it get's thrown out
+					name = "notSearchedFor"; //label it so it get's thrown out
 				}
 
 				for (var i = 0; i < viewModel.sideBarArray().length; i++) {//as the knockoutArray fills, it checks what's in it
-					if (nameForList == viewModel.sideBarArray()[i]){//if there is a duplicate
-						nameForList = "duplicate";//mark it to be thrown out
+					if (name == viewModel.sideBarArray()[i]){//if there is a duplicate
+						name = "duplicate";//mark it to be thrown out
 					}
 				}
 				
-				if (nameForList != "duplicate" && nameForList != "notSearchedFor"){//avoid these names
-					viewModel.sideBarArray.push(nameForList);//now add the accepted names one by one
-					markerList.push(centerForList);
+				if (name != "duplicate" && name != "notSearchedFor"){//avoid these names
+					viewModel.sideBarArray.push(name);//now add the accepted names one by one
+					markerList.push(center);
 					viewModel.sideBarArray.sort();
 				}
 			})
 		})
-		viewModel.addMarkers(markerList);
+		viewModel.addMarkers(markerList);//add to knockout array
 		viewModel.searchTerm("");//to clear the memory of the search bar
 	},
 
@@ -344,21 +354,36 @@ var viewModel = {
 		this.sideBarArray.sort();
 	},
 
+
+	resetMarkerColor: function() {
+		for (var i = 0; i < viewModel.markers.length; i++) {//set all markers to orig icon
+			var genMarker = viewModel.markers[i];
+			genMarker.icon = 'http://maps.google.com/mapfiles/ms/icons/red.png';
+			genMarker.setMap(genMarker.map);
+			genMarker.setZIndex(0);
+		}
+	},
+
+
 	//when you click a name in the sidebar
 	clickSideBar: function() {
-		for (var i = 0; i < viewModel.markers.length; i++) {
-			if (viewModel.markers[i].id == this) {
-				var marker = viewModel.markers[i];
-				marker.icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
-				marker.map.panTo(marker.getPosition());
-				marker.setMap(marker.map);
-				marker.id = this.toString();
+		viewModel.resetMarkerColor();
+		for (var i = 0; i < viewModel.markers.length; i++) {//set this marker to special icon
+			var indMarker = viewModel.markers[i];
+			if (indMarker.id == this) {
+				indMarker.icon = 'http://maps.google.com/mapfiles/ms/icons/green.png';
+				indMarker.map.panTo(indMarker.getPosition());
+				indMarker.setMap(indMarker.map);
+				indMarker.id = this.toString();
+				indMarker.setZIndex(1);
 
+				viewModel.mapPopUp(indMarker);//pop up infowindow
 
-				viewModel.mapPopUp(marker);//pop up infowindow
-				//TODO: make that marker layered on top
-				//TODO: after clicking a second marker, make the first go back to orig icon
-				//TODO: if any term is already red, make them all black upon click
+				//if any term is already red, make them all black upon click
+				var list = document.getElementsByClassName("sideBarElems");
+				for (var i = 0; i < list.length; i++){
+					list[i].setAttribute("id", "null");//set all list items to black
+				}
 			}
 		}
 	},
@@ -384,23 +409,6 @@ var viewModel = {
 			})
 		})
 		return urlList;
-	},
-
-	//TODO: use this in searchButton()
-	retrieveJsonObject: function(name) {//only works with specific name input - like upon marker click or sideBar click
-		var inputClick = (name.toString());
-		var markerList = [];
-		$.each(viewModel.searchCategories, function(i, val){//return all json categories
-			var category = val;	
-			$.each(mapMarkers[category], function(i, val){//return all json location names
-				var name = mapMarkers[category][i]["name"];
-				if (inputClick == name) {
-					var markerCenter = mapMarkers[category][i];
-					markerList.push(markerCenter);
-				}
-			})
-		})
-		return markerList[0];
 	},
 
 
