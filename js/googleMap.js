@@ -109,34 +109,52 @@ var viewModel = {
 		viewModel.initFacebook();
 	},
 
-	//TODO: set up user location so the map re-centers to user if they are in appropriate range
-	userLocation: function(map) {
-		var initialLocation = new google.maps.LatLng(38.103, -121.572);
-		// Try W3C Geolocation (Preferred)
-		if(navigator.geolocation) {
-			browserSupportFlag = true;
-			navigator.geolocation.getCurrentPosition(function(position) {
-		  		initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-		  		map.setCenter(initialLocation);
-			}, function() {
-		  		handleNoGeolocation(browserSupportFlag);
-			});
-		}
-		// Browser doesn't support Geolocation
-		else {
-			browserSupportFlag = false;
-			handleNoGeolocation(browserSupportFlag);
-		}
-
-		function handleNoGeolocation(errorFlag) {
-			if (errorFlag == true) {
-				  //alert("Geolocation service failed.");
-				} else {
-				  //alert("Your browser doesn't support geolocation.");
+	//compare delta loop map center with collected user location
+	compareLocations: function(lat, lon) {
+		var deltaLat = 38.103;
+		var deltaLon = -121.572;
+		var dif = .1;//acceptable range to use gelocation
+		var closeInLat = false;
+		if (lat - deltaLat < dif) {
+			var latDif = lat - deltaLat;
+			if (lat + deltaLat < dif) {
+				var latDif = lat + deltaLat < dif;
+				if (latDif > 0 && latDif < dif) {
+					closeInLat = true;
 				}
-				map.setCenter(initialLocation);
 			}
-		},
+		}
+		var closeInLon = false;
+		if (lon - deltaLon < dif) {
+			var latDif = lon - deltaLon;
+			if (lon + deltaLon < dif) {
+				var lonDif = lon + deltaLon < dif;
+				if (lonDif > 0 && lonDif < dif) {
+					closeInLon = true;
+				}
+			}
+		}
+		if (closeInLat && closeInLon == true) {
+			return true;
+		}
+	},
+
+
+	//find user location so the map can re-center to user if they are in appropriate range
+	userLocation: function(map) {
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var pos = {lat: position.coords.latitude, lng: position.coords.longitude};
+				if (viewModel.compareLocations(position.coords.latitude, position.coords.longitude) == true){
+					map.setCenter(pos);
+				}			
+			})
+		} else {
+			// Browser doesn't support Geolocation
+			console.log("continuing on to delta loop map");
+		}
+	},
 
 	//Google's API. Initialized from the HTML as a callback to the API function
 	initMap: function() {
@@ -150,8 +168,8 @@ var viewModel = {
 		var map = new google.maps.Map(mapDiv, mapOptions);
 
 		// check for user location to set map
-		// TODO: use this OR the preset if user out of range
-		// viewModel.userLocation(map);
+		viewModel.userLocation(map);
+
 
 		// draw the known obstruction markers on the map
 		for (var i = 0; i < mapMarkers.obstructions.length; i++) {
