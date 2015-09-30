@@ -98,12 +98,12 @@ var viewModel = {
 
 	//load the category buttons from the JSON into the HTML at page load
 	init: function() {
-		var menuBar = document.getElementById('menuBar');
+		var buttonBar = document.getElementById('buttonBar');
 		for (var i = 0; i < viewModel.searchCategories.length; i++) {
 			var iconButton = document.createElement('BUTTON');
 			iconButton.innerHTML = viewModel.searchCategories[i];
 			iconButton.setAttribute("data-bind", "click: categoryClick");
-			menuBar.appendChild(iconButton);
+			buttonBar.appendChild(iconButton);
 		}
 		viewModel.noaaRequest();
 		viewModel.initFacebook();
@@ -247,7 +247,7 @@ var viewModel = {
 
 
 	mapPopUp: function(self) {
-		this.infowindow.close();
+		this.infowindow.close();//close all infoWindows
 
 		var fbs = viewModel.retrieveJsonArray("fb");
 		var urls = viewModel.retrieveJsonArray("url");
@@ -372,6 +372,8 @@ var viewModel = {
 			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
 		}
 		this.sideBarArray.sort();
+		document.getElementById("map").style.marginLeft = "20%";
+		document.getElementById("sideBar").style.display = "block";
 	},
 
 

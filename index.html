@@ -6,14 +6,13 @@
     <link rel="icon" href="images/favicon.ico">
   </head>
   <body>
-    <div id="menuBar"> 
-      <div class="floatLeft">
+    <ul id="menuBar"> 
+      <li class="floatLeft">
         <h1>Delta Loop</h1>
-      </div>
-      <div>
+      </li>
+      <li class="floatRight">
       <table>
         <tr>
-          <!-- maybe css wind to red if over 10knots -->
           <td data-bind="text: statWind"></td>
         </tr>
         <tr>
@@ -24,26 +23,30 @@
         <tr>
         </tr>
       </table>
-      </div>
-    </div>
+      </li>
+    </ul>
     <hr>
-      <form id="searchBar"> 
+      <form align="center" id="searchBar"> 
         <input data-bind="textInput: searchTerm, attr: {placeholder: ph}">
         <button type="submit" data-bind="click: searchButton">Search</button>
         <button type="reset" data-bind="click: clearSearch">Clear</button>
       </form>
-    <div id= "mapArea">
-      <div class="floatLeft">
+    <div id="mapArea">
+      <div class="floatLeft" id="sideBar">
         <ul data-bind="foreach: sideBarArray">
           <li class="sideBarElems" data-bind="text: $data, click: $parent.clickSideBar"></li>
         </ul>
+        <!-- <div id="sideBarBottomGradient"></div> -->
       </div>
+
       <div id="map">
       </div>
     </div>
-    
+    <div align="center" id="buttonBar"></div>
+
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/knockout.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="js/googleMap.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw3yFhKbI90hzE_o1ewvftKIccsGlHD7c&callback=viewModel.initMap"></script>
   </body>
