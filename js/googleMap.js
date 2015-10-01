@@ -1,3 +1,9 @@
+//Author: Erin Lehmkuhl
+//Date: October 1, 2015
+//This is a neighborhood map created for Udacity to show off the use of Model View ViewModel (knockout.js)
+//icons provided by: Maps Icons Collection https://mapicons.mapsmarker.com
+
+
 var mapMarkers = {
 	"obstructions": [
 		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg"},
@@ -6,7 +12,7 @@ var mapMarkers = {
 	"anchorages": [
 		{"name": "The Meadows", "center": {lat: 38.2509717, lng: -121.497613}, "url": "http://www.parks.ca.gov/?page_id=492", "img": "http://www.parks.ca.gov/pages/492/images/DeltaMeadowsProp_S0006502_npg.jpg"},
 		{"name": "Mandeville Tip", "center": {lat: 38.0618274, lng: -121.5345715}, "url": "http://dbw.parks.ca.gov/maps/facilityinfo.asp?facilityID=1217", "img": "images/mandeville.jpg"},
-		{"name": "The Bedrooms in Potato Slough", "center": {lat: 38.0841627, lng: -121.538574}, "url": "https://www.google.com/search?q=potato+slough+california+delta&biw=1013&bih=637&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIvvu29NmXyAIVypWICh2iOQmF", "img": "images/genericDelta.jpg"}
+		{"name": "The Bedrooms", "center": {lat: 38.0841627, lng: -121.538574}, "url": "https://www.google.com/search?q=potato+slough+california+delta&biw=1013&bih=637&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIvvu29NmXyAIVypWICh2iOQmF", "img": "images/genericDelta.jpg"}
 	],
 	"restaurants": [
 		{"name": "Korth's Pirates' Lair", "center": {lat: 38.0977543, lng: -121.5680157}, "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
@@ -30,19 +36,19 @@ var mapMarkers = {
 	"repairs": [
 		{"name": "Delta Boat Works", "center": {lat: 38.0997402, lng: -121.5669706}, "url": "http://deltaboatworks.com/", "img": "images/boatWorks.jpg"},
 		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "url": "http://www.perrysboatharbor.com/", "img": "images/perrys.jpg"},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"}
+		{"name": "Tower Park Marina", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"}
 	],
 	"gas": [
 		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
+		{"name": "Tower Park Marina", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"}
 	],
 	"berthing": [
 		{"name": "Discovery Bay", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Discovery-Bay-Yacht-Harbor-134771066597263/timeline/"},
 		{"name": "Whiskey Slough", "center": {lat: 37.9357669, lng: -121.4326344}, "fb": "https://www.facebook.com/Whiskey-Slough-Marina-Indoor-Boat-Storage-Bar-and-Grill-149733071729373/timeline/"},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
+		{"name": "Tower Park Marina", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
 		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
@@ -51,7 +57,7 @@ var mapMarkers = {
 		{"name": "Owl Harbor", "center": {lat: 38.1162493, lng: -121.6257876}, "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"}
 	],
 	"rentals": [
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
+		{"name": "Tower Park Marina", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
 		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}, "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"}
 	],
@@ -70,7 +76,7 @@ var mapMarkers = {
 	"stores": [
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
-		{"name": "Tower Park Marina Resort", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
+		{"name": "Tower Park Marina", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
 	]
 };
 
@@ -237,7 +243,7 @@ var viewModel = {
 				map: this.map,
 				animation: google.maps.Animation.DROP,
 				id: listOfMarkers[i].name,
-				icon: 'http://maps.google.com/mapfiles/ms/icons/red.png',
+				icon: '/images/mapIcons/harbor_brown.png',
 			}));
 			viewModel.markers[i].addListener('click', viewModel.clickMarker);
 	    	bounds.extend(new google.maps.LatLng(lat, lng));
@@ -293,8 +299,8 @@ var viewModel = {
 					list[i].setAttribute("id", "highlight");//make sideBar term red
 					
 					//highlight marker
-					this.icon = 'http://maps.google.com/mapfiles/ms/icons/green.png';
-					//this.map.panTo(this.getPosition());
+					this.icon = '/images/mapIcons/harbor_white.png';
+					this.map.panTo(this.getPosition());
 					this.setMap(this.map);
 					this.setZIndex(1);
 				}
@@ -327,7 +333,7 @@ var viewModel = {
 	sideBarArray: ko.observableArray(),
 
 	searchTerm: ko.observable(),// the input box on HTML form
-	ph: ko.observable("locations"),
+	ph: ko.observable("location names"),
 
 	//creates sideBar that is affected by a json search
 	searchButton: function() {
@@ -362,6 +368,7 @@ var viewModel = {
 				}
 			})
 		})
+		document.getElementById("sideBar").style.display = "block";//shows hidden sideBar on first search
 		viewModel.addMarkers(markerList);//add to knockout array
 		viewModel.searchTerm("");//to clear the memory of the search bar
 	},
@@ -372,15 +379,14 @@ var viewModel = {
 			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
 		}
 		this.sideBarArray.sort();
-		document.getElementById("map").style.marginLeft = "20%";
-		document.getElementById("sideBar").style.display = "block";
+		document.getElementById("sideBar").style.display = "block";//shows hidden sideBar on first category search
 	},
 
 
 	resetMarkerColor: function() {
 		for (var i = 0; i < viewModel.markers.length; i++) {//set all markers to orig icon
 			var genMarker = viewModel.markers[i];
-			genMarker.icon = 'http://maps.google.com/mapfiles/ms/icons/red.png';
+			genMarker.icon = '/images/mapIcons/harbor_brown.png';
 			genMarker.setMap(genMarker.map);
 			genMarker.setZIndex(0);
 		}
@@ -393,7 +399,7 @@ var viewModel = {
 		for (var i = 0; i < viewModel.markers.length; i++) {//set this marker to special icon
 			var indMarker = viewModel.markers[i];
 			if (indMarker.id == this) {
-				indMarker.icon = 'http://maps.google.com/mapfiles/ms/icons/green.png';
+				indMarker.icon = '/images/mapIcons/harbor_white.png';
 				indMarker.map.panTo(indMarker.getPosition());
 				indMarker.setMap(indMarker.map);
 				indMarker.id = this.toString();
