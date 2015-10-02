@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
     <title>Delta Loop</title>
     <link rel="icon" href="images/favicon.ico">
   </head>
@@ -26,10 +27,10 @@
       </li>
     </ul>
     <hr>
-    <div align="center" id="buttonBar"></div>
+    <div id="buttonBar"></div>
     <div id="mapArea">
       <div class="floatLeft" id="sideBar">
-        <form align="center" id="searchForm"> 
+        <form id="searchForm"> 
           <input data-bind="textInput: searchTerm, attr: {placeholder: ph}">
           <button id="submitBtn" type="submit" data-bind="click: searchButton">Search</button>
           <button id="clearBtn" type="reset" data-bind="click: clearSearch">Clear</button>
@@ -38,15 +39,13 @@
           <li class="sideBarElems" data-bind="text: $data, click: $parent.clickSideBar"></li>
         </ul>
       </div>
-
       <div id="map">
       </div>
     </div>
-    <p align="center">Delta Loop - Brannan Island Road, Iselton, CA</p>
+    <p>Delta Loop - Brannan Island Road, Iselton, CA</p>
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/knockout.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="js/googleMap.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw3yFhKbI90hzE_o1ewvftKIccsGlHD7c&callback=viewModel.initMap"></script>
   </body>
 </html>

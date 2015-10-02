@@ -6,35 +6,35 @@
 
 var mapMarkers = {
 	"obstructions": [
-		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg"},
-		{"name": "Embedded Log", "center": {lat: 38.1200, lng: -121.5855}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg"}
+		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg", "icon": "/images/mapIcons/pirates_red.png"},
+		{"name": "Embedded Log", "center": {lat: 38.1200, lng: -121.5855}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg", "icon": "/images/mapIcons/pirates_red.png"}
 	],
 	"anchorages": [
-		{"name": "The Meadows", "center": {lat: 38.2509717, lng: -121.497613}, "url": "http://www.parks.ca.gov/?page_id=492", "img": "http://www.parks.ca.gov/pages/492/images/DeltaMeadowsProp_S0006502_npg.jpg"},
-		{"name": "Mandeville Tip", "center": {lat: 38.0618274, lng: -121.5345715}, "url": "http://dbw.parks.ca.gov/maps/facilityinfo.asp?facilityID=1217", "img": "images/mandeville.jpg"},
-		{"name": "The Bedrooms", "center": {lat: 38.0841627, lng: -121.538574}, "url": "https://www.google.com/search?q=potato+slough+california+delta&biw=1013&bih=637&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIvvu29NmXyAIVypWICh2iOQmF", "img": "images/genericDelta.jpg"}
+		{"name": "The Meadows", "center": {lat: 38.2509717, lng: -121.497613}, "url": "http://www.parks.ca.gov/?page_id=492", "img": "http://www.parks.ca.gov/pages/492/images/DeltaMeadowsProp_S0006502_npg.jpg", "icon": "/images/mapIcons/harbor_brown.png"},
+		{"name": "Mandeville Tip", "center": {lat: 38.0618274, lng: -121.5345715}, "url": "http://dbw.parks.ca.gov/maps/facilityinfo.asp?facilityID=1217", "img": "images/mandeville.jpg", "icon": "/images/mapIcons/harbor_brown.png"},
+		{"name": "The Bedrooms", "center": {lat: 38.0841627, lng: -121.538574}, "url": "https://www.google.com/search?q=potato+slough+california+delta&biw=1013&bih=637&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIvvu29NmXyAIVypWICh2iOQmF", "img": "images/genericDelta.jpg", "icon": "/images/mapIcons/harbor_brown.png"}
 	],
 	"restaurants": [
 		{"name": "Korth's Pirates' Lair", "center": {lat: 38.0977543, lng: -121.5680157}, "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
-		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}, "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/"},
-		{"name": "Moore's Riverboat", "center": {lat: 38.1007412, lng: -121.5658718}, "url": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts", "img": "images/moores.png"},
-		{"name": "Rosa's", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/Rosasattowerpark"},
-		{"name": "Giusti's Place", "center": {lat: 38.2242578, lng: -121.5071795}, "fb": "https://www.facebook.com/Giustis-341683185695/timeline/"},
+		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}, "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/", "icon": "/images/mapIcons/burger_brown.png"},
+		{"name": "Moore's Riverboat", "center": {lat: 38.1007412, lng: -121.5658718}, "url": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts", "img": "images/moores.png", "icon": "/images/mapIcons/burger_brown.png"},
+		{"name": "Rosa's", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/Rosasattowerpark", "icon": "/images/mapIcons/burger_brown.png"},
+		{"name": "Giusti's Place", "center": {lat: 38.2242578, lng: -121.5071795}, "fb": "https://www.facebook.com/Giustis-341683185695/timeline/", "icon": "/images/mapIcons/burger_brown.png"},
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
-		{"name": "The Point", "center": {lat: 38.1487831, lng: -121.6909701}, "fb": "https://www.facebook.com/ThePointRestaurantRioVista"},
-		{"name": "Boardwalk Grill", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Boardwalk-Grill-285018528287/timeline/"},
-		{"name": "Wimpy's", "center": {lat: 38.2264718, lng: -121.490745}, "fb": "https://www.facebook.com/Wimpys-Marina-405286399555382/timeline/"},
+		{"name": "The Point", "center": {lat: 38.1487831, lng: -121.6909701}, "fb": "https://www.facebook.com/ThePointRestaurantRioVista", "icon": "/images/mapIcons/burger_brown.png"},
+		{"name": "Boardwalk Grill", "center": {lat: 37.9056747, lng: -121.5869824}, "fb": "https://www.facebook.com/Boardwalk-Grill-285018528287/timeline/", "icon": "/images/mapIcons/burger_brown.png"},
+		{"name": "Wimpy's", "center": {lat: 38.2264718, lng: -121.490745}, "fb": "https://www.facebook.com/Wimpys-Marina-405286399555382/timeline/", "icon": "/images/mapIcons/burger_brown.png"},
 		{"name": "Orwood", "center": {lat: 37.9388633, lng: -121.6123867}, "fb": "https://www.facebook.com/orwoodresort"},
-		{"name": "Rusty Porthole", "center": {lat: 38.0347238, lng: -121.6230485}, "fb": "https://www.facebook.com/Rusty-Porthole-217097898307326/timeline/"}
+		{"name": "Rusty Porthole", "center": {lat: 38.0347238, lng: -121.6230485}, "fb": "https://www.facebook.com/Rusty-Porthole-217097898307326/timeline/", "icon": "/images/mapIcons/burger_brown.png"}
 	],
 	"bars": [
-		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
-		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}, "url": "https://www.facebook.com/groups/327403865799/", "img": "images/lostisle.png"},
-		{"name": "Sugar Barge", "center": {lat: 38.0280595, lng: -121.6116769}, "url": "https://www.facebook.com/sugar.barge?fref=ts", "img": "images/sugarbarge.jpg"},
-		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "url": "http://www.thespindrift.com/", "img": "images/spindrift.jpg"}
+		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/", "icon": "/images/mapIcons/bar_brown.png"},
+		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}, "url": "https://www.facebook.com/groups/327403865799/", "img": "images/lostisle.png", "icon": "/images/mapIcons/bar_brown.png"},
+		{"name": "Sugar Barge", "center": {lat: 38.0280595, lng: -121.6116769}, "url": "https://www.facebook.com/sugar.barge?fref=ts", "img": "images/sugarbarge.jpg", "icon": "/images/mapIcons/burger_brown.png"},
+		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "url": "http://www.thespindrift.com/", "img": "images/spindrift.jpg", "icon": "/images/mapIcons/bar_brown.png"}
 	],
 	"repairs": [
-		{"name": "Delta Boat Works", "center": {lat: 38.0997402, lng: -121.5669706}, "url": "http://deltaboatworks.com/", "img": "images/boatWorks.jpg"},
+		{"name": "Delta Boat Works", "center": {lat: 38.0997402, lng: -121.5669706}, "url": "http://deltaboatworks.com/", "img": "images/boatWorks.jpg", "icon": "/images/mapIcons/repair_brown.png"},
 		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "url": "http://www.perrysboatharbor.com/", "img": "images/perrys.jpg"},
 		{"name": "Tower Park Marina", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"}
 	],
@@ -42,7 +42,7 @@ var mapMarkers = {
 		{"name": "Willow Berm", "center": {lat: 38.1038469, lng: -121.5677196}, "fb": "https://www.facebook.com/willowberm?fref=ts"},
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
 		{"name": "Tower Park Marina", "center": {lat: 38.1101495, lng: -121.4983044}, "url": "https://www.facebook.com/pages/Tower-Park-Marina-And-Resort/150871971609324", "img": "images/towerpark.jpg"},
-		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
+		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/", "icon": "/images/mapIcons/burger_brown.png"},
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"}
 	],
 	"berthing": [
@@ -53,7 +53,7 @@ var mapMarkers = {
 		{"name": "Paradise Point", "center": {lat: 38.0464052, lng: -121.4182412}, "fb": "https://www.facebook.com/ParadisePointMarina"},
 		{"name": "B and W", "center": {lat: 38.1285623, lng: -121.5801002}, "fb": "https://www.facebook.com/B-W-Resort-Marina-118918581453710/timeline/"},
 		{"name": "Perry's", "center": {lat: 38.1255365, lng: -121.5820935}, "url": "http://www.perrysboatharbor.com/", "img": "images/perrys.jpg"},
-		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "url": "http://www.spindriftmarina.com/", "img": "images/spindrift.jpg"},
+		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "url": "http://www.spindriftmarina.com/", "img": "images/spindrift.jpg", "icon": "/images/mapIcons/bar_brown.png"},
 		{"name": "Owl Harbor", "center": {lat: 38.1162493, lng: -121.6257876}, "fb": "https://www.facebook.com/Owl-Harbor-Marina-117030248315538/timeline/"}
 	],
 	"rentals": [
@@ -94,7 +94,6 @@ var noaaData = {
 	"attrs": ["s", "v", "v"],
 	"suffixes": ["knots", "degrees", "degrees"],
 };
-
 
 var viewModel = {
 
@@ -238,20 +237,24 @@ var viewModel = {
 			var lat = listOfMarkers[i].center.lat;
 			var lng =  listOfMarkers[i].center.lng;
 			var location = listOfMarkers[i]['center'];
-			//var icon = listOfMarkers[i].icon;
+			if (listOfMarkers[i].icon) {
+				var icon = listOfMarkers[i].icon;
+			} else {
+				var icon = '/images/mapIcons/marina_brown.png';
+			}
 			
 			viewModel.markers.push(new google.maps.Marker({
 				position: location,
 				map: this.map,
 				animation: google.maps.Animation.DROP,
 				id: listOfMarkers[i].name,
-				icon: '/images/mapIcons/harbor_brown.png',
+				icon: icon,
 			}));
 			viewModel.markers[i].addListener('click', viewModel.clickMarker);
 	    	bounds.extend(new google.maps.LatLng(lat, lng));
 		}
 		this.map.fitBounds(bounds);
-		this.map.panBy(-150, 0);//account for the left side overlay
+		this.map.panBy(-60, 0);//account for the left side overlay
 	},
 
 
@@ -274,8 +277,12 @@ var viewModel = {
 					' data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + 
 					fbTag + '"><a href="' + fbTag + '">click me</a></blockquote></div></div>';
 				} else {
-					var contentString = '<div><h3>' + self.id + '</h3><img class="infoWindowImg" src="' + img + 
-					'" alt="scenic image"></div><div><a href= "' + urlTag + '">more info</a></div>';
+					// var contentString = '<div><h3>' + self.id + '</h3><img class="infoWindowImg" src="' + img + 
+					// '" alt="scenic image"></div><div><a href= "' + urlTag + '" target="_blank">more info</a></div>';
+
+					var contentString = '<div><a href= "' + urlTag + '" target="_blank"><h3>' + 
+					self.id + '</h3><img class="infoWindowImg" src="' + img + 
+					'" alt="scenic image"></div><div></a></div>';
 				}
 
 				this.infowindow.setContent(contentString);
@@ -301,8 +308,10 @@ var viewModel = {
 					viewModel.mapPopUp(self);//pop up infowindow
 					list[i].setAttribute("id", "highlight");//make sideBar term red
 					
-					//highlight marker
-					this.icon = '/images/mapIcons/harbor_white.png';
+					//highlight marker			
+					var iconTemp = this.icon;
+					iconTemp = iconTemp.replace("brown", "white");
+					this.icon = iconTemp;
 					this.map.panTo(this.getPosition());
 					this.setMap(this.map);
 					this.setZIndex(1);
@@ -336,7 +345,7 @@ var viewModel = {
 	sideBarArray: ko.observableArray(),
 
 	searchTerm: ko.observable(),// the input box on HTML form
-	ph: ko.observable("location names"),
+	ph: ko.observable("search all locations"),
 
 	//creates sideBar that is affected by a json search
 	searchButton: function() {
@@ -389,7 +398,9 @@ var viewModel = {
 	resetMarkerColor: function() {
 		for (var i = 0; i < viewModel.markers.length; i++) {//set all markers to orig icon
 			var genMarker = viewModel.markers[i];
-			genMarker.icon = '/images/mapIcons/harbor_brown.png';
+			var iconTemp = genMarker.icon;
+			iconTemp = iconTemp.replace("white", "brown");
+			genMarker.icon = iconTemp;
 			genMarker.setMap(genMarker.map);
 			genMarker.setZIndex(0);
 		}
@@ -402,7 +413,9 @@ var viewModel = {
 		for (var i = 0; i < viewModel.markers.length; i++) {//set this marker to special icon
 			var indMarker = viewModel.markers[i];
 			if (indMarker.id == this) {
-				indMarker.icon = '/images/mapIcons/harbor_white.png';
+				var iconTemp = indMarker.icon;
+				iconTemp = iconTemp.replace("brown", "white");
+				indMarker.icon = iconTemp;
 				indMarker.map.panTo(indMarker.getPosition());
 				indMarker.setMap(indMarker.map);
 				indMarker.id = this.toString();
@@ -430,16 +443,16 @@ var viewModel = {
 		document.getElementById("searchForm").reset();
 	},
 
-	retrieveJsonArray: function (whatToSearchFor) {//can only be: "name", "center" or "fb"
-		var urlList = [];
+	retrieveJsonArray: function (whatToSearchFor) {//can only be: "name", "center", "fb" or "icon"
+		var myList = [];
 		$.each(viewModel.searchCategories, function(i, val){//return all json categories
 			var category = val;			
 			$.each(mapMarkers[category], function(i, val){//return all json location names
 				var name = mapMarkers[category][i][whatToSearchFor]; 
-				urlList.push(name);
+				myList.push(name);
 			})
 		})
-		return urlList;
+		return myList;
 	},
 
 

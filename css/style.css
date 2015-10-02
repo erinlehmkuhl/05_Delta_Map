@@ -1,7 +1,3 @@
-/*div {
-	border: 1px solid red;
-}*/
-
 body, button {
 	font-family: 'Patua One', cursive;
 }
@@ -14,7 +10,6 @@ html, body{
 }
 
 h1 {
-	/*text-align: center;*/
 	padding-left: 5%;
 	margin-top: 4%;
 	font-size: 2.5em;
@@ -23,7 +18,6 @@ h1 {
 p {
 	font-size: small;
 }
-
 
 #searchForm {
 	font-size: 1em;
@@ -94,7 +88,6 @@ hr {
 	margin-top: -3%;
 }
 
-
 ul {
 	list-style-type: none;
 	margin: 0;
@@ -104,6 +97,10 @@ ul {
 
 #buttonBar {
     margin-top: 2%;
+}
+
+#buttonBar, form, p {
+	text-align: center;
 }
 
 #highlight {
@@ -123,15 +120,22 @@ td {
 	width: 180px;
 }
 
-
 /* Larger than mobile */
 @media (min-width: 420px) {}
 
 /* Larger than phablet */
-@media (min-width: 550px) {}
+@media (min-width: 550px) {
+	form {
+		/*force search to be on next line*/
+	}
+}
 
 /* Larger than tablet */
-@media (min-width: 750px) {}
+@media (min-width: 750px) {
+	hr {
+		margin-top: -2%;
+	}
+}
 
 /* Larger than desktop */
 @media (min-width: 1000px) {}
