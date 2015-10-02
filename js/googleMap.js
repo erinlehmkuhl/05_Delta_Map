@@ -109,6 +109,7 @@ var viewModel = {
 			var iconButton = document.createElement('BUTTON');
 			iconButton.innerHTML = viewModel.searchCategories[i];
 			iconButton.setAttribute("data-bind", "click: categoryClick");
+			iconButton.setAttribute("class", "catButton");
 			buttonBar.appendChild(iconButton);
 		}
 		viewModel.noaaRequest();
@@ -237,6 +238,7 @@ var viewModel = {
 			var lat = listOfMarkers[i].center.lat;
 			var lng =  listOfMarkers[i].center.lng;
 			var location = listOfMarkers[i]['center'];
+			//var icon = listOfMarkers[i].icon;
 			
 			viewModel.markers.push(new google.maps.Marker({
 				position: location,
@@ -249,6 +251,7 @@ var viewModel = {
 	    	bounds.extend(new google.maps.LatLng(lat, lng));
 		}
 		this.map.fitBounds(bounds);
+		this.map.panBy(-150, 0);//account for the left side overlay
 	},
 
 
@@ -424,7 +427,7 @@ var viewModel = {
 	clearSearch: function() {
 		viewModel.clearMarkers();
 		viewModel.resetSideBar();
-		document.getElementById("searchBar").reset();
+		document.getElementById("searchForm").reset();
 	},
 
 	retrieveJsonArray: function (whatToSearchFor) {//can only be: "name", "center" or "fb"

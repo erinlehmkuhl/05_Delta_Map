@@ -26,13 +26,14 @@
       </li>
     </ul>
     <hr>
-      <form align="center" id="searchBar"> 
-        <input data-bind="textInput: searchTerm, attr: {placeholder: ph}">
-        <button type="submit" data-bind="click: searchButton">Search</button>
-        <button type="reset" data-bind="click: clearSearch">Clear</button>
-      </form>
+    <div align="center" id="buttonBar"></div>
     <div id="mapArea">
       <div class="floatLeft" id="sideBar">
+        <form align="center" id="searchForm"> 
+          <input data-bind="textInput: searchTerm, attr: {placeholder: ph}">
+          <button id="submitBtn" type="submit" data-bind="click: searchButton">Search</button>
+          <button id="clearBtn" type="reset" data-bind="click: clearSearch">Clear</button>
+        </form>
         <ul data-bind="foreach: sideBarArray">
           <li class="sideBarElems" data-bind="text: $data, click: $parent.clickSideBar"></li>
         </ul>
@@ -41,8 +42,7 @@
       <div id="map">
       </div>
     </div>
-    <div align="center" id="buttonBar"></div>
-
+    <p align="center">Delta Loop - Brannan Island Road, Iselton, CA</p>
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/knockout.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
