@@ -1,67 +1,4 @@
-body, button {
-	font-family: 'Patua One', cursive;
-}
 
-html, body{ 
-	height: 100%; 
-	width: 100%; 
-	margin: 0; 
-	padding: 0;
-}
-
-h1 {
-	padding-left: 5%;
-	margin-top: 4%;
-	font-size: 2.5em;
-}
-
-p {
-	font-size: small;
-}
-
-#searchForm {
-	font-size: 1em;
-}
-
-.catButton { 
-	border-radius: 7px;
-    border: 1px solid gray;
-    background: white;
-    padding: 10px;
-}
-
-button:active {
-	background-color: gray;
-}
-
-button:focus {
-	outline: 0;
-}
-
-#mapArea {
-	position: relative;
-	height: 60%;
-}
-
-#map { 
-	height: 100%;
-	margin-top: 2%;
-}
-
-#sideBar {
-	position: absolute;
-	background: linear-gradient(to top, rgba(255, 255, 255, 0),  rgba(255, 255, 255, 0.9));  	
-	padding-left: 1%;
-	padding-right: 1%;
-	overflow: auto;
-	top: 0;
-	left: 0;
-	width: 27%;
-	height: 100%;
-	z-index: 3;
-	background-color: rgba(256,256,256,.65); /*dim the background*/
-	display: none;
-}
 
 .sideBarElems, button {
 	cursor: pointer;
@@ -75,41 +12,19 @@ button:focus {
 	color: red;
 }
 
-
-.floatLeft {
-	float: left;
+#searchForm {
+	font-size: 1em;
+	padding-bottom: 15px;
 }
 
-.floatRight {
-	float: right;
-}
-
-hr {
-	margin-top: -3%;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-#buttonBar {
-    margin-top: 2%;
-}
-
-#buttonBar, form, p {
-	text-align: center;
+input {
+	display: block;
 }
 
 #highlight {
 	color: red;
 }
 
-td {	
-	font-size: .8em;
-}
 
 #iw_container {
 	width: 180px;
@@ -120,27 +35,14 @@ td {
 	width: 180px;
 }
 
-/* Larger than mobile */
-@media (min-width: 420px) {}
-
-/* Larger than phablet */
-@media (min-width: 550px) {
-	form {
-		/*force search to be on next line*/
-	}
-}
-
-/* Larger than tablet */
-@media (min-width: 750px) {
+@media (min-width: 900px) {
 	hr {
 		margin-top: -2%;
 	}
+	input {
+	display: initial;
+	}
 }
 
-/* Larger than desktop */
-@media (min-width: 1000px) {}
-
-/* Larger than Desktop HD */
-@media (min-width: 1200px) {}
 
 
