@@ -350,6 +350,7 @@ var viewModel = {
 
 	//creates sideBar that is affected by a json search
 	searchButton: function() {
+		console.log("searchButton ", mapMarkers);
 		viewModel.clearSearch();
 
 		var markerList = [];
@@ -388,9 +389,9 @@ var viewModel = {
 
 	//populates names in side bar
 	addSideBarInfo: function(){
-		console.log("viewModel.category ", viewModel.category);
 		for (marker in mapMarkers[viewModel.category]){
 			this.sideBarArray.push(mapMarkers[viewModel.category][marker]['name']);
+			console.log("sideBarArray ", mapMarkers[viewModel.category][marker]['name']);
 		}
 		this.sideBarArray.sort();
 		document.getElementById("sideBar").style.display = "block";//shows hidden sideBar on first category search
@@ -492,6 +493,10 @@ var viewModel = {
 
 };
 viewModel.initFacebook();
-ko.applyBindings(viewModel);
+//ko.applyBindings(viewModel);
+ko.applyBindings(viewModel, document.getElementById("formInput"));
+ko.applyBindings(viewModel, document.getElementById("sideBarList"));
+
+
 
 

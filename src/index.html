@@ -34,11 +34,11 @@
     <div id="mapArea">
       <div class="floatLeft" id="sideBar">
         <form id="searchForm"> 
-          <input data-bind="textInput: searchTerm, attr: {placeholder: ph}">
+          <input id="formInput" data-bind="textInput: searchTerm, attr: {placeholder: ph}">
           <button id="submitBtn" type="submit" data-bind="click: searchButton">Search</button>
           <button id="clearBtn" type="reset" data-bind="click: clearSearch">Clear</button>
         </form>
-        <ul data-bind="foreach: sideBarArray">
+        <ul id="sideBarList" data-bind="foreach: sideBarArray">
           <li class="sideBarElems" data-bind="text: $data, click: $parent.clickSideBar"></li>
         </ul>
       </div>
