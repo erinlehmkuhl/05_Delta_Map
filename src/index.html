@@ -17,13 +17,13 @@
       <li class="floatRight">
       <table>
         <tr>
-          <td data-bind="text: statWind"></td>
+          <td id="noaaWind" data-bind="text: statWind"></td>
         </tr>
         <tr>
-          <td data-bind="text: statWater"></td>
+          <td id="noaaWater" data-bind="text: statWater"></td>
         <tr>
         </tr>
-          <td data-bind="text: statAir"></td>
+          <td id="noaaAir" data-bind="text: statAir"></td>
         <tr>
         </tr>
       </table>
@@ -46,11 +46,9 @@
       </div>
     </div>
     <p>Delta Loop - Brannan Island Road, Iselton, CA</p>
-
-    <script src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/knockout.min.js"></script>
-    <script type="text/javascript" src="js/app.min.js"></script>
+    <script type="text/javascript" src="js/concat.min.js"></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw3yFhKbI90hzE_o1ewvftKIccsGlHD7c&callback=viewModel.initMap"></script>
+    <script defer async type="text/javascript" src="js/app.min.js"></script>
     </body>
 </html>
 <link rel="stylesheet" type="text/css" href="css/style.min.css" media="none" onload="if(media!='all')media='all'">

@@ -7,6 +7,7 @@ module.exports = function(grunt) {
           target: {
           files: {
               'js/app.min.js': ['js/src/app.js'],
+              'js/app_aboveTheFold.min.js': ['js/src/app_aboveTheFold.js']
           }
       }
     },
@@ -47,6 +48,16 @@ module.exports = function(grunt) {
         }
       },
 
+      concat: {
+        options: {
+          separator: ';',
+        },
+        dist: {
+          src: ['js/jquery.min.js', 'js/knockout.min.js', 'js/app_aboveTheFold.min.js'],
+          dest: 'js/concat.min.js',
+        },
+      }
+
     // gzip assets 1-to-1 for production
     // compress: {
     //   main: {
@@ -66,9 +77,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     //grunt.loadNpmTasks('grunt-contrib-compress');
 
 
-    grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'htmlmin']);
+    grunt.registerTask('default', ['uglify', 'imagemin', 'cssmin', 'htmlmin', 'concat']);
 
 };
