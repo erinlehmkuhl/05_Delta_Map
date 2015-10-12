@@ -43,6 +43,11 @@ p {
 	font-size: small;
 }
 
+.errorText, map {
+	text-align:center;
+	margin-top:200px;
+}
+
 .catButton { 
 	border-radius: 7px;
     border: 1px solid gray;

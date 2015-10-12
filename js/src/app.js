@@ -164,6 +164,11 @@ var viewModel = {
 
 	//Google's API. Initialized from the HTML as a callback to the API function
 	initMap: function() {
+		//timeout for error handling
+		var googleMapTimeout = setTimeout(function(){
+			$(".errorText").text("google maps failed to load");
+		}, 8000);
+
 		//draw map
 		var mapDiv = document.getElementById('map');
 		var mapOptions = {
@@ -201,6 +206,9 @@ var viewModel = {
 
 		//variable for later use throughout
 		this.map = map;
+
+		//error handling
+		clearTimeout(googleMapTimeout);
 	},
 
 	//Facebook API: aside from the appID, this is cut/pasted from FB
@@ -277,9 +285,6 @@ var viewModel = {
 					' data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + 
 					fbTag + '"><a href="' + fbTag + '">click me</a></blockquote></div></div>';
 				} else {
-					// var contentString = '<div><h3>' + self.id + '</h3><img class="infoWindowImg" src="' + img + 
-					// '" alt="scenic image"></div><div><a href= "' + urlTag + '" target="_blank">more info</a></div>';
-
 					var contentString = '<div><a href= "' + urlTag + '" target="_blank"><h3>' + 
 					self.id + '</h3><img class="infoWindowImg" src="' + img + 
 					'" alt="scenic image"></div><div></a></div>';
@@ -470,7 +475,7 @@ var viewModel = {
 
 		$.each(noaaData.urls, function (i) {
 			//format url for Yahoo proxy
-			var yql = 'http://query.yahooapis.com/v1/public/yql?'
+			var yql = 'https://query.yahooapis.com/v1/public/yql?'
 	        	+ 'q=' + encodeURIComponent('select * from json where url=@url')
 	        	+ '&url=' + encodeURIComponent(noaaData.urls[i])
 	        	+ '&format=json&callback=?';
