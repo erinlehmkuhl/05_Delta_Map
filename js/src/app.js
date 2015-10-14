@@ -6,8 +6,8 @@
 
 var mapMarkers = {
 	"obstructions": [
-		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg", "icon": "/images/mapIcons/pirates_red.png"},
-		{"name": "Embedded Log", "center": {lat: 38.1200, lng: -121.5855}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg", "icon": "/images/mapIcons/pirates_red.png"}
+		{"name": "Submerged Tree", "center": {lat: 38.1025, lng: -121.5625}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg", "icon": "/images/mapIcons/pirates_brown.png"},
+		{"name": "Embedded Log", "center": {lat: 38.1200, lng: -121.5855}, "url": "http://www.vesselassistsanfrancisco.com/", "img": "images/vesAssist.jpg", "icon": "/images/mapIcons/pirates_brown.png"}
 	],
 	"anchorages": [
 		{"name": "The Meadows", "center": {lat: 38.2509717, lng: -121.497613}, "url": "http://www.parks.ca.gov/?page_id=492", "img": "http://www.parks.ca.gov/pages/492/images/DeltaMeadowsProp_S0006502_npg.jpg", "icon": "/images/mapIcons/harbor_brown.png"},
@@ -17,7 +17,7 @@ var mapMarkers = {
 	"restaurants": [
 		{"name": "Korth's Pirates' Lair", "center": {lat: 38.0977543, lng: -121.5680157}, "fb": "https://www.facebook.com/Korths-Pirates-Lair-Marina-348297131692/timeline/"},
 		{"name": "Lighthouse", "center": {lat: 38.1057531, lng: -121.5707022}, "fb": "https://www.facebook.com/Lighthouse-Marina-Restaurant-and-Resort-151574161575567/timeline/", "icon": "/images/mapIcons/burger_brown.png"},
-		{"name": "Moore's Riverboat", "center": {lat: 38.1007412, lng: -121.5658718}, "url": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts", "img": "images/moores.png", "icon": "/images/mapIcons/burger_brown.png"},
+		{"name": "Moore's Riverboat", "center": {lat: 38.1007412, lng: -121.5658718}, "url": "https://www.facebook.com/pages/Moores-Riverboat-Isleton/128136840571906?fref=ts", "img": "images/moores.jpg", "icon": "/images/mapIcons/burger_brown.png"},
 		{"name": "Rosa's", "center": {lat: 38.1101495, lng: -121.4983044}, "fb": "https://www.facebook.com/Rosasattowerpark", "icon": "/images/mapIcons/burger_brown.png"},
 		{"name": "Giusti's Place", "center": {lat: 38.2242578, lng: -121.5071795}, "fb": "https://www.facebook.com/Giustis-341683185695/timeline/", "icon": "/images/mapIcons/burger_brown.png"},
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/"},
@@ -29,7 +29,7 @@ var mapMarkers = {
 	],
 	"bars": [
 		{"name": "Windmill Cove", "center": {lat: 37.9910241, lng: -121.4074522}, "fb": "https://www.facebook.com/Windmill-Cove-Bar-and-Grill-158184030912668/timeline/", "icon": "/images/mapIcons/bar_brown.png"},
-		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}, "url": "https://www.facebook.com/groups/327403865799/", "img": "images/lostisle.png", "icon": "/images/mapIcons/bar_brown.png"},
+		{"name": "Lost Isle", "center": {lat: 37.9989336, lng: -121.4498872}, "url": "https://www.facebook.com/groups/327403865799/", "img": "images/lostisle.jpg", "icon": "/images/mapIcons/bar_brown.png"},
 		{"name": "Sugar Barge", "center": {lat: 38.0280595, lng: -121.6116769}, "url": "https://www.facebook.com/sugar.barge?fref=ts", "img": "images/sugarbarge.jpg", "icon": "/images/mapIcons/burger_brown.png"},
 		{"name": "Spindrift", "center": {lat: 38.1077053, lng: -121.5981793}, "url": "http://www.thespindrift.com/", "img": "images/spindrift.jpg", "icon": "/images/mapIcons/bar_brown.png"}
 	],
@@ -107,6 +107,9 @@ var viewModel = {
 		for (var i = 0; i < viewModel.searchCategories.length; i++) {
 			var iconButton = document.createElement('BUTTON');
 			iconButton.innerHTML = viewModel.searchCategories[i];
+			//firefox can't bind to window.event: TODO - get rid of knockout
+			//iconButton.setAttribute("data-bind", "click: $root.func.bind($root)");
+			//iconButton.setAttribute("data-bind", "click: function(data, event){ $parent.expandRow($data, event) }");
 			iconButton.setAttribute("data-bind", "click: categoryClick");
 			iconButton.setAttribute("class", "catButton");
 			buttonBar.appendChild(iconButton);
@@ -248,7 +251,7 @@ var viewModel = {
 			if (listOfMarkers[i].icon) {
 				var icon = listOfMarkers[i].icon;
 			} else {
-				var icon = '/images/mapIcons/marina_brown.png';
+				var icon = '/images/mapIcons/marina_brown.png'; //marina brown icon
 			}
 			
 			viewModel.markers.push(new google.maps.Marker({
