@@ -1,13 +1,12 @@
 # 05_Delta_Map
 Interactive Map for Visiting the California Delta
 
-## To launch the site from github:
-**best option**
-* go here: ```https://erinlehmkuhl.github.io/```
+## To launch the site from github: *best option*
+* type in browser: ```https://erinlehmkuhl.github.io/```
 
 
 ## To launch the site from ngrok:
-* download ngrok to your computer
+* download ngrok to your computer: ```https://ngrok.com/```
 * download this repository to your local computer
 * in a terminal navigate to the repository
 * type: ```python -m SimpleHTTPServer 8080```
