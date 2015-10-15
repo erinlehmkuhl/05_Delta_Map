@@ -21,6 +21,14 @@ input {
 	display: block;
 }
 
+.openSideBarButton {
+	margin-bottom: -2px;
+}
+
+.closeSideBarButton {
+	margin-bottom: 12px;
+}
+
 #highlight {
 	color: red;
 }

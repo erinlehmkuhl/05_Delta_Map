@@ -215,6 +215,7 @@ var viewModel = {
 	},
 
 	//Facebook API: aside from the appID, this is cut/pasted from FB
+	//no error handling needed: hardcoded URL to still function without FB connection
 	initFacebook: function() {
       window.fbAsyncInit = function() {
         FB.init({
@@ -286,7 +287,7 @@ var viewModel = {
 					var contentString = '<div id="fb-root"></div><div class="fb-page" data-href="' + fbTag + 
 					'" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false"' +
 					' data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="' + 
-					fbTag + '"><a href="' + fbTag + '">click me</a></blockquote></div></div>';
+					fbTag + '"><a href="' + fbTag + '" target="_blank">click me</a></blockquote></div></div>';
 				} else {
 					var contentString = '<div><a href= "' + urlTag + '" target="_blank"><h3>' + 
 					self.id + '</h3><img class="infoWindowImg" src="' + img + 
@@ -388,9 +389,23 @@ var viewModel = {
 				}
 			})
 		})
-		document.getElementById("sideBar").style.display = "block";//shows hidden sideBar on first search
 		viewModel.addMarkers(markerList);//add to knockout array
 		viewModel.searchTerm("");//to clear the memory of the search bar
+	},
+
+	//to get the sidebar out of the way while using the map & infoWindows
+	toggleSideBar: ko.observable(false),
+	lowerButton: ko.observable(true),
+	upperButton: ko.observable(false),
+
+	hideSideBarFunc: function() {
+		viewModel.toggleSideBar(false);
+		viewModel.upperButton(true);
+	},
+
+	showSideBarFunc: function() {
+		viewModel.toggleSideBar(true);
+		viewModel.upperButton(false);
 	},
 
 	//populates names in side bar
@@ -399,7 +414,7 @@ var viewModel = {
 			this.sideBarArray.push(mapMarkers[this.category][marker]['name']);
 		}
 		this.sideBarArray.sort();
-		document.getElementById("sideBar").style.display = "block";//shows hidden sideBar on first category search
+		viewModel.showSideBarFunc();
 	},
 
 
@@ -468,6 +483,7 @@ var viewModel = {
 	
 	//------------- NOAA API for weather at top of page  --------------//
 
+	//error handling for NOAA API: hardcoded information - "not available" below
 	statWind: ko.observable("Wind Speed: not available"),
 	statWater: ko.observable("Water Temperature: not available"),
 	statAir: ko.observable("Air Temperature: not available"),

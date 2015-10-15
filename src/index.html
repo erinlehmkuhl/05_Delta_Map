@@ -5,7 +5,7 @@
     <meta name=viewport content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
     <style>
-      #buttonBar,.errorText,form,map,p{text-align:center}#map,#sideBar,body,html{height:100%}body,button{font-family:'Patua One',cursive}body,html{width:100%;margin:0;padding:0}td{font-size:.8em}#buttonBar{margin-top:2%}.floatLeft{float:left}.floatRight{float:right}hr{margin-top:-3%}h1{padding-left:5%;margin-top:4%;font-size:2.5em}p{font-size:small}.errorText,map{margin-top:200px}.catButton{border-radius:7px;border:1px solid gray;background:#fff;padding:10px}button:active{background-color:gray}button:focus{outline:0}#mapArea{position:relative;height:60%}#map{margin-top:2%}ul{list-style-type:none;margin:0;padding:0;overflow:hidden}#sideBar{position:absolute;background:linear-gradient(to top,rgba(255,255,255,0),rgba(255,255,255,.9));padding-left:1%;padding-right:1%;overflow:auto;top:0;left:0;width:27%;z-index:3;background-color:rgba(256,256,256,.65);display:none}
+      #buttonBar,.errorText,form,map,p{text-align:center}#map,#sideBar,body,html{height:100%}body,button{font-family:'Patua One',cursive}body,html{width:100%;margin:0;padding:0}td{font-size:.8em}#buttonBar{margin-top:2%}.floatLeft{float:left}.floatRight{float:right}hr{margin-top:-3%}h1{padding-left:5%;margin-top:4%;font-size:2.5em}p{font-size:small}.errorText,map{margin-top:200px}.catButton{border-radius:7px;border:1px solid gray;background:#fff;padding:10px}button:active{background-color:gray}button:focus{outline:0}#mapArea{position:relative;height:60%}#map{margin-top:2%}ul{list-style-type:none;margin:0;padding:0;overflow:hidden}#sideBar{position:absolute;background:linear-gradient(to top,rgba(255,255,255,0),rgba(255,255,255,.9));padding-left:1%;padding-right:1%;overflow:auto;top:0;left:0;width:27%;z-index:3;background-color:rgba(256,256,256,.65)}
     </style>
     <title>Delta Loop</title>
     <link rel="icon" href="images/favicon.ico">
@@ -32,8 +32,10 @@
     </ul>
     <hr>
     <div id="buttonBar"></div>
+    <button class="openSideBarButton" data-bind="visible: upperButton, click: showSideBarFunc"><img src="/images/openBut.png"></button>
     <div id="mapArea">
-      <div class="floatLeft" id="sideBar">
+      <div class="floatLeft" id="sideBar" data-bind="visible: toggleSideBar">
+        <button class="floatRight closeSideBarButton" data-bind="visible: lowerButton, click: hideSideBarFunc"><img src="/images/cancelBut.png"></button>
         <form id="searchForm"> 
           <input data-bind="textInput: searchTerm, attr: {placeholder: ph}">
           <button id="submitBtn" type="submit" data-bind="click: searchButton">Search</button>
@@ -49,7 +51,8 @@
     </div>
     <p>Delta Loop - Brannan Island Road, Iselton, CA</p>
     </body>
-    <!-- loads javascript async but in order listed, which is not default behavior of js-->
+    <!-- loads javascript async but in the order the scripts are listed b/c it dynamically loads them
+    http://www.html5rocks.com/en/tutorials/speed/script-loading/ explains how this snippett works-->
     <script type="text/javascript">
       ['js/jquery.min.js', 'js/knockout.min.js', 'js/app.min.js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBw3yFhKbI90hzE_o1ewvftKIccsGlHD7c&callback=viewModel.initMap'].forEach(function(src) {
         var script = document.createElement('script');
