@@ -12,7 +12,7 @@ Interactive Map for Visiting the California Delta
 * type: ```python -m SimpleHTTPServer 8080```
 * in a terminal navigate to the repository again
 * type either: ```./ngrok http 8080``` or ```ngrok http 8080```
-* it will give you a url to copy into a browser
+* it will give you a url to copy into a browser that looks something like this: ```http://127.0.0.1:4040```
 * once that ngork page is open click on one of the two url tunnels and it will open a hosted version of this site.
 
 ## To use this site:
