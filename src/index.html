@@ -32,10 +32,10 @@
     </ul>
     <hr>
     <div id="buttonBar"></div>
-    <button class="openSideBarButton" data-bind="visible: upperButton, click: showSideBarFunc"><img src="/images/openBut.png"></button>
     <div id="mapArea">
       <div class="floatLeft" id="sideBar" data-bind="visible: toggleSideBar">
-        <button class="floatRight closeSideBarButton" data-bind="visible: lowerButton, click: hideSideBarFunc"><img src="/images/cancelBut.png"></button>
+        <button class="sideBarButton" data-bind="visible: closeButton, click: minSideBarFunc"><img src="/images/cancelBut.png"></button>
+        <button class="sideBarButton" data-bind="visible: openButton, click: showSideBarFunc"><img src="/images/openBut.png"></button>
         <form id="searchForm"> 
           <input data-bind="textInput: searchTerm, attr: {placeholder: ph}">
           <button id="submitBtn" type="submit" data-bind="click: searchButton">Search</button>

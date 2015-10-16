@@ -395,17 +395,24 @@ var viewModel = {
 
 	//to get the sidebar out of the way while using the map & infoWindows
 	toggleSideBar: ko.observable(false),
-	lowerButton: ko.observable(true),
-	upperButton: ko.observable(false),
+	closeButton: ko.observable(true),
+	openButton: ko.observable(false),
 
-	hideSideBarFunc: function() {
-		viewModel.toggleSideBar(false);
-		viewModel.upperButton(true);
-	},
-
+	//reveals sideBar either for first time (categoryClick) or upon click of openButton
 	showSideBarFunc: function() {
 		viewModel.toggleSideBar(true);
-		viewModel.upperButton(false);
+		if ($('#sideBar').hasClass('minSideBar')) {
+			$('#sideBar').removeClass('minSideBar');
+		}
+		viewModel.openButton(false);
+		viewModel.closeButton(true);
+	},
+
+	//minimize sidebar
+	minSideBarFunc: function() {
+		$('#sideBar').addClass('minSideBar');
+		viewModel.openButton(true);
+		viewModel.closeButton(false);
 	},
 
 	//populates names in side bar
@@ -463,7 +470,7 @@ var viewModel = {
 	clearSearch: function() {
 		viewModel.clearMarkers();
 		viewModel.resetSideBar();
-		document.getElementById("searchForm").reset();
+		document.getElementById('searchForm').reset();
 	},
 
 	retrieveJsonArray: function (whatToSearchFor) {//can only be: "name", "center", "fb" or "icon"

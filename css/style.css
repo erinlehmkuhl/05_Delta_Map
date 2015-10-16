@@ -21,12 +21,11 @@ input {
 	display: block;
 }
 
-.openSideBarButton {
-	margin-bottom: -2px;
-}
-
-.closeSideBarButton {
+.sideBarButton {
+	position: relative;
+	left: 78%;
 	margin-bottom: 12px;
+
 }
 
 #highlight {
@@ -43,12 +42,19 @@ input {
 	width: 180px;
 }
 
+.minSideBar {
+	transform: translateX(-78%);
+}
+
 @media (min-width: 900px) {
 	hr {
 		margin-top: -2%;
 	}
 	input {
 	display: initial;
+	}
+	.sideBarButton{
+		left:92%;
 	}
 }
 
